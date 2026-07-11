@@ -1,0 +1,54 @@
+{
+  "permissions": {
+    "allow": [],
+    "defaultMode": "acceptEdits"
+  },
+  "model": "opus[1m]",
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "orient@learning-opportunities": true,
+    "ponytail@ponytail": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
+    },
+    "ecc": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/affaan-m/everything-claude-code.git"
+      }
+    },
+    "learning-opportunities": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/DrCatHicks/learning-opportunities.git"
+      }
+    },
+    "understand-anything": {
+      "source": {
+        "source": "github",
+        "repo": "Lum1104/Understand-Anything"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "medium",
+  "tui": "fullscreen",
+  "voiceEnabled": true
+}
