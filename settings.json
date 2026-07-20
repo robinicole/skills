@@ -3,11 +3,13 @@
     "allow": [],
     "defaultMode": "acceptEdits"
   },
-  "model": "opus[1m]",
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "orient@learning-opportunities": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "i-have-adhd@i-have-adhd": true,
+    "learning-opportunities@learning-opportunities": true,
+    "learning-goal@learning-goal": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -44,6 +46,18 @@
       "source": {
         "source": "github",
         "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/robin/.claude/i-have-adhd"
+      }
+    },
+    "learning-goal": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/DrCatHicks/learning-goal.git"
       }
     }
   },
