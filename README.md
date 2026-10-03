@@ -27,3 +27,12 @@ Lost? `/ask-matt` routes you.
 **Meta** — `/triage` moves issues and external PRs through a state machine · `/handoff` compacts a conversation for a fresh agent · `/teach` learns a topic across sessions · `/writing-great-skills` on writing one that behaves predictably.
 
 Each `skills/<name>/SKILL.md` is the real documentation.
+
+## Plugins
+
+Two Claude Code plugins ride along with this config:
+
+- **`i-have-adhd`** — ADHD-friendly output: action first, steps numbered, no filler. Vendored as a git submodule under `i-have-adhd/` (from [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd)). Invoke with `/i-have-adhd`.
+- **`ponytail`** — forces the laziest solution that actually works: YAGNI, stdlib and native before dependencies, shortest diff. Installed via the marketplace (`plugins/cache/ponytail/`, from [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)). Invoke with `/ponytail` (levels: `lite`, `full`, `ultra`).
+- **`learning-opportunities`** — offers interactive learning exercises after architectural work (new files, schema changes, refactors) so AI-assisted coding still builds your own skill. Installed via the marketplace (`plugins/cache/learning-opportunities/`). Invoke with `/learning-opportunities`.
+- **`learning-goal`** — walks you through structured goal-setting (Mental Contrasting with Implementation Intentions) to turn a vague "I want to learn X" into concrete if-then plans. Installed via the marketplace (`plugins/cache/learning-goal/`). Invoke with `/learning-goal`.

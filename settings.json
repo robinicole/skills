@@ -1,15 +1,119 @@
 {
   "permissions": {
     "allow": [],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "auto"
+  },
+  "model": "fable[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robin/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ]
   },
   "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true,
+    "i-have-adhd@i-have-adhd": true,
+    "learning-goal@learning-goal": true,
+    "learning-opportunities@learning-opportunities": true,
     "orient@learning-opportunities": true,
     "ponytail@ponytail": true,
-    "i-have-adhd@i-have-adhd": true,
-    "learning-opportunities@learning-opportunities": true,
-    "learning-goal@learning-goal": true
+    "pyright-lsp@claude-plugins-official": true,
+    "humanizer@humanizer": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -18,34 +122,10 @@
         "repo": "anthropics/claude-plugins-official"
       }
     },
-    "obsidian-skills": {
-      "source": {
-        "source": "github",
-        "repo": "kepano/obsidian-skills"
-      }
-    },
     "ecc": {
       "source": {
         "source": "git",
         "url": "https://github.com/affaan-m/everything-claude-code.git"
-      }
-    },
-    "learning-opportunities": {
-      "source": {
-        "source": "git",
-        "url": "https://github.com/DrCatHicks/learning-opportunities.git"
-      }
-    },
-    "understand-anything": {
-      "source": {
-        "source": "github",
-        "repo": "Lum1104/Understand-Anything"
-      }
-    },
-    "ponytail": {
-      "source": {
-        "source": "github",
-        "repo": "DietrichGebert/ponytail"
       }
     },
     "i-have-adhd": {
@@ -59,10 +139,46 @@
         "source": "git",
         "url": "https://github.com/DrCatHicks/learning-goal.git"
       }
+    },
+    "learning-opportunities": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/DrCatHicks/learning-opportunities.git"
+      }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "understand-anything": {
+      "source": {
+        "source": "github",
+        "repo": "Lum1104/Understand-Anything"
+      }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
   "voiceEnabled": true
 }
