@@ -16,7 +16,7 @@ Reading an ACF: slow decay from lag 1 is trend, spikes at multiples of m are sea
 
 ## White noise test
 
-Ljung-Box, on the series or on residuals. Lags: 10 for non-seasonal, 2m for seasonal, capped at T/5. A small p-value means autocorrelation remains.
+Ljung-Box, on the series or on residuals, with the lag rule from the residual check in [MODELS.md](MODELS.md#residuals-and-intervals). A small p-value means autocorrelation remains.
 
 ```python
 from statsmodels.stats.diagnostic import acorr_ljungbox
@@ -43,7 +43,7 @@ The `tsfeatures` package computes these and more at scale.
 
 ## Box-Cox
 
-Use it when seasonal swings grow with the level. Lambda 0 is a log, 1 is no change. Pick the lambda that makes seasonal amplitude constant across the plot and round it to something readable (0, 0.5).
+Use it when seasonal swings grow with the level. Lambda 0 is a log, 1 is no change. The goal is a lambda that makes seasonal amplitude constant across the plot, rounded to something readable (0, 0.5). scipy picks lambda by likelihood, which targets normality; treat it as a starting value and check it on the plot (FPP3 uses the Guerrero method).
 
 Back-transforming a forecast gives the median. When forecasts will be summed or a mean is needed, apply the bias adjustment.
 
@@ -51,7 +51,7 @@ Back-transforming a forecast gives the median. When forecasts will be summed or 
 from scipy.stats import boxcox
 from scipy.special import inv_boxcox
 
-y_t, lam = boxcox(y)                 # lam by maximum likelihood
+y_t, lam = boxcox(y)                 # starting lambda, check on the plot
 fc = inv_boxcox(fc_t, lam)           # median, original scale
 fc_mean = fc * (1 + sigma2_h * (1 - lam) / (2 * fc ** (2 * lam)))
 ```
@@ -74,4 +74,4 @@ seasadj = y - res.seasonal
 
 Seasonally adjusted data is for spotting turning points and for forecasting with a non-seasonal model before adding seasonality back (see decomposition forecasting in [MODELS.md](MODELS.md)). When the seasonal pattern is the thing being forecast, model the raw series.
 
-Classical decomposition and X-13/SEATS are for monthly and quarterly official statistics.
+X-13/SEATS is what statistical agencies use for monthly and quarterly official data. Classical decomposition is outdated; use STL.

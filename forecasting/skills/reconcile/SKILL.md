@@ -24,14 +24,12 @@ MinT with the shrinkage covariance (`mint_shrink`) is the default. WLS on varian
 
 ## Steps
 
-1. Build every level and S. Done when `tags` lists each level and the bottom level matches the raw series count.
+1. Build every level and S. `aggregate` adds no total on its own, so the spec starts with a single-valued `total` column. Done when `tags` starts with `total`, lists each level, and the bottom level matches the raw series count.
 2. Forecast every level with `fitted=True` (MinT needs in-sample errors). Done when every series in `Y_df` has base forecasts and fitted values.
 3. Reconcile with BottomUp and MinT side by side. Done when both reconciled columns exist and an aggregate equals the sum of its children within rounding.
 4. Backtest with the `forecasting:backtest` skill, reporting every level that ships. A method that wins at the total can lose at the leaves. Done when the score table has one block per level.
 
 ## Code
-
-Tested with hierarchicalforecast 1.5.
 
 ```python
 from statsforecast import StatsForecast
@@ -41,7 +39,9 @@ from hierarchicalforecast.core import HierarchicalReconciliation
 from hierarchicalforecast.methods import BottomUp, MinTrace
 
 # raw: columns region, store, category, ds, y
-spec = [["region"], ["region", "store"], ["region", "store", "category"]]
+raw["total"] = "total"
+spec = [["total"], ["total", "region"], ["total", "region", "store"],
+        ["total", "region", "store", "category"]]
 Y_df, S_df, tags = aggregate(df=raw, spec=spec)
 
 sf = StatsForecast(models=[AutoETS(season_length=12)], freq="MS")

@@ -23,17 +23,17 @@ sf = StatsForecast(
 
 ## Residuals and intervals
 
-Fitted values are one-step-ahead predictions on training data. Use them for the residual check and for nothing else: they say nothing about accuracy at longer horizons.
+Fitted values are one-step-ahead predictions on training data, so they serve the residual check and say nothing about accuracy at longer horizons.
 
-Residual check, after any transform test the residuals on the transformed scale:
+Residual check, for every candidate except the benchmarks (they are the yardstick). After a transform, test the residuals on the transformed scale.
 
-- Ljung-Box p > 0.05 at 10 lags (non-seasonal) or 2m (seasonal).
+- Ljung-Box p > 0.05 at 10 lags (non-seasonal) or 2m (seasonal), capped at T/5.
 - Mean within ±2 standard errors of zero.
 - Variance flat on a time plot.
 
 A model that fails is misspecified. Add the missing structure (a seasonal term, a transform, a regressor) and recheck.
 
-Intervals widen with horizon for every method except the mean: naive with √h, drift faster, ETS and ARIMA by their own formulas. When residuals are not normal, use conformal intervals:
+Intervals widen with horizon for every method except the mean: naive with √h, drift faster, ETS and ARIMA by their own formulas. Conformal intervals drop the normality assumption:
 
 ```python
 from statsforecast.utils import ConformalIntervals
@@ -76,7 +76,7 @@ ETS takes no regressors. When drivers matter, use dynamic regression and keep ET
 
 Difference until stationary, then fit AR and MA terms to what is left.
 
-Stationary means no trend, no seasonality, constant variance. Stabilise variance with a log or Box-Cox, remove trend with one difference (rarely two), remove seasonality with a seasonal difference at lag m. KPSS decides how many:
+Stationary means no trend, no seasonality, constant variance. Stabilise variance with a log or Box-Cox, remove trend with one difference (rarely two), remove seasonality with a seasonal difference at lag m. KPSS decides d; a seasonal-strength test (the `nsdiffs` default) decides D:
 
 ```python
 from statsforecast.arima import ndiffs, nsdiffs
@@ -115,7 +115,7 @@ Correlation is enough for forecasting and says nothing causal; a price coefficie
 
 Trend choice: regression on time assumes the trend never changes and gives narrow intervals. A differenced ARIMA with drift admits it might change. Beyond a few periods, the second is the honest default.
 
-Dynamic harmonic regression (Fourier terms as x) is the standard answer for weekly or daily data, and the only route for non-integer periods like 52.18:
+Dynamic harmonic regression (Fourier terms as x) is the standard answer for weekly or daily data, and the standard route for non-integer periods like 52.18 (TBATS is the other):
 
 ```python
 import pandas as pd

@@ -7,10 +7,10 @@ A plugin for forecasting skills. It lives here instead of `skills/` because Clau
 | Skill | What it does |
 | --- | --- |
 | `/forecasting:forecast` | Seven steps from framing the problem to shipped intervals. Points to `EXPLORE.md`, `MODELS.md`, `PRACTICAL.md` and `PYTHON.md` for detail |
-| `/forecasting:backtest` | Rolling-origin evaluation per horizon, scored against seasonal naive |
+| `/forecasting:backtest` | Evaluation and model selection: metric chosen from the decision, leakage checklist, rolling-origin scores per horizon against seasonal naive, selection rules. Metric tables in `METRICS.md` |
 | `/forecasting:reconcile` | Makes forecasts add up across a hierarchy, with MinT |
 
-All three can also start on their own when a conversation matches their description. The content comes from Hyndman and Athanasopoulos, *Forecasting: Principles and Practice* (3rd ed), with the R code replaced by Python (statsforecast 2.1, utilsforecast 0.2, hierarchicalforecast 1.5). Every code block was run against those versions.
+All three can also start on their own when a conversation matches their description. The content comes from Hyndman and Athanasopoulos, *Forecasting: Principles and Practice* (3rd ed), with the R code replaced by Python (statsforecast 2.1, utilsforecast 0.2, hierarchicalforecast 1.5). Every code block was run against those versions and reviewed a second time for statistical and API errors.
 
 ## Adding a skill
 

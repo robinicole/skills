@@ -1,6 +1,6 @@
 ---
 name: forecast
-description: Build a time series forecast end to end, from problem framing to shipped intervals, following Hyndman and Athanasopoulos (FPP3) in Python. Use when the user wants to forecast demand, sales, traffic or any series over time, pick a forecasting model, or asks why a forecast is bad.
+description: Build a time series forecast end to end, from problem framing to shipped intervals, following Hyndman and Athanasopoulos (FPP3) in Python. Use when the user wants to forecast a series over time, choose a forecasting model, or asks why a forecast is bad.
 ---
 
 # Forecast
@@ -36,17 +36,17 @@ Fit the four benchmarks (mean, naive, seasonal naive, drift) and at least two re
 
 When series add up through a hierarchy (SKU, store, region, total), use the `forecasting:reconcile` skill on top of this step.
 
-Done when every candidate has passed the residual check (Ljung-Box p > 0.05, mean near zero, flat variance) or has been fixed or dropped.
+Done when every candidate other than the benchmarks has passed the residual check in [MODELS.md](MODELS.md#residuals-and-intervals), or has been fixed or dropped. The benchmarks are the yardstick and skip the check.
 
 ## 5. Evaluate
 
-Run the `forecasting:backtest` skill on all candidates and the bar at the horizons from step 1.
+Run the `forecasting:backtest` skill on all candidates and the bar at the horizons from step 1. It owns metric choice, leakage checks and model selection.
 
 Done when backtest has produced its skill table and named a winner, or named the bar as the winner.
 
 ## 6. Forecast
 
-Refit the winner on all the data and forecast with the interval levels from step 1. If backtest found under-coverage, use conformal intervals. Combining ETS, ARIMA and a regression by a simple mean is a strong option when several models are close.
+Refit the winner on all the data and forecast with the interval levels from step 1, using conformal intervals if backtest switched to them. When several models are close, see Combining in [MODELS.md](MODELS.md#combining).
 
 Done when the output has a point forecast and the agreed intervals for every series and every horizon, back-transformed to the original scale.
 

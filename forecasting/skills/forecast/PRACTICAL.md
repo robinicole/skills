@@ -8,9 +8,9 @@ Reference for step 4 of [SKILL.md](SKILL.md). Check the table against the data b
 | Intermittent demand, small counts | Croston variants forecast size and interval separately; report a demand rate. Large counts need nothing special |
 | Must stay positive | Model log(y); back-transformed forecasts and intervals stay positive |
 | Must stay in [a, b] | Scaled logit: model log((y-a)/(b-y)), back-transform |
-| Several reasonable models | Average them |
-| Interval for a sum of forecasts | Points add, intervals do not unless series are independent. Simulate joint paths and take quantiles of the sum |
-| Missing values | Missing at random: state space models skip them. Otherwise backcast or STL-interpolate |
+| Several reasonable models | Average them (see Combining in [MODELS.md](MODELS.md#combining)) |
+| Interval for a sum of forecasts | Points add, intervals never do. For independent series add variances; otherwise simulate joint paths and take quantiles of the sum |
+| Missing values | statsforecast needs complete series, so fill gaps first: interpolate (STL-based for seasonal data) or backcast. statsmodels SARIMAX and UnobservedComponents accept NaN directly |
 | Outliers | Replace with an STL-interpolated value; add a dummy at that date if the cause is known |
 | Very short series (under ~2 seasons) | Naive and ETS(A,N,N); keep parameters well below the observation count |
 | Very long series | Truncate to recent years, or use a model whose parameters evolve |
