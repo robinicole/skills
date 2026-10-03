@@ -113,7 +113,8 @@
     "orient@learning-opportunities": true,
     "ponytail@ponytail": true,
     "forecasting@robinicole-skills": true,
-    "humanizer@humanizer": true
+    "humanizer@humanizer": true,
+    "mattpocock-skills@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
