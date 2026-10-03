@@ -112,7 +112,8 @@
     "learning-opportunities@learning-opportunities": true,
     "orient@learning-opportunities": true,
     "ponytail@ponytail": true,
-    "forecasting@robinicole-skills": true
+    "forecasting@robinicole-skills": true,
+    "humanizer@humanizer": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -161,6 +162,12 @@
       "source": {
         "source": "github",
         "repo": "robinicole/skills"
+      }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
       }
     }
   },

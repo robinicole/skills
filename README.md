@@ -31,3 +31,21 @@ Each `skills/<name>/SKILL.md` is the real documentation.
 ## Plugins in this repo
 
 `forecasting/` is a plugin for forecasting skills, invoked as `/forecasting:<name>`. It's enabled in `settings.json`; see `forecasting/README.md` for how to add a skill.
+
+## Plugins
+
+Two keys in `settings.json`: a source under `extraKnownMarketplaces`, then `<plugin>@<marketplace>: true` under `enabledPlugins`. Restart Claude Code after editing.
+
+```json
+"extraKnownMarketplaces": { "ponytail": { "source": { "source": "github", "repo": "DietrichGebert/ponytail" } } },
+"enabledPlugins": { "ponytail@ponytail": true }
+```
+
+| Plugin | Source | Invoke |
+|---|---|---|
+| `forecasting` | github `robinicole/skills` | `/forecasting:<name>` |
+| `ponytail` | github `DietrichGebert/ponytail` | `/ponytail [lite\|full\|ultra]` |
+| `humanizer` | github `blader/humanizer` | `/humanizer` |
+| `i-have-adhd` | directory `~/.claude/i-have-adhd` (submodule: `git submodule update --init`) | `/i-have-adhd` |
+| `learning-opportunities` | git `DrCatHicks/learning-opportunities.git` | `/learning-opportunities`, `/orient` |
+| `learning-goal` | git `DrCatHicks/learning-goal.git` | `/learning-goal` |
