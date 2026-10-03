@@ -27,3 +27,7 @@ Lost? `/ask-matt` routes you.
 **Meta** — `/triage` moves issues and external PRs through a state machine · `/handoff` compacts a conversation for a fresh agent · `/teach` learns a topic across sessions · `/writing-great-skills` on writing one that behaves predictably.
 
 Each `skills/<name>/SKILL.md` is the real documentation.
+
+## Plugins in this repo
+
+`forecasting/` is a plugin for forecasting skills, invoked as `/forecasting:<name>`. It's enabled in `settings.json`; see `forecasting/README.md` for how to add a skill.

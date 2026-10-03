@@ -7,7 +7,8 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "orient@learning-opportunities": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "forecasting@robinicole-skills": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -44,6 +45,12 @@
       "source": {
         "source": "github",
         "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "robinicole-skills": {
+      "source": {
+        "source": "github",
+        "repo": "robinicole/skills"
       }
     }
   },
