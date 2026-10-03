@@ -107,14 +107,14 @@
     ]
   },
   "enabledPlugins": {
-    "i-have-adhd@i-have-adhd": true,
     "learning-goal@learning-goal": true,
     "learning-opportunities@learning-opportunities": true,
     "orient@learning-opportunities": true,
     "ponytail@ponytail": true,
     "forecasting@robinicole-skills": true,
     "humanizer@humanizer": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@claude-plugins-official": true,
+    "i-have-adhd@i-have-adhd": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -127,12 +127,6 @@
       "source": {
         "source": "git",
         "url": "https://github.com/affaan-m/everything-claude-code.git"
-      }
-    },
-    "i-have-adhd": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/robin/.claude/i-have-adhd"
       }
     },
     "learning-goal": {
@@ -169,6 +163,12 @@
       "source": {
         "source": "github",
         "repo": "blader/humanizer"
+      }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
       }
     }
   },
