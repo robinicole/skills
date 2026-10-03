@@ -20,12 +20,12 @@ Work the seven steps in order. A model moves to the next step only when the curr
 3. **Seal against leakage.** Done when every item below is checked for every candidate:
    - Transform parameters (Box-Cox lambda, scaling) are estimated inside each training window.
    - Features use only values at or before the origin: lags, rolling windows, target encodings.
-   - Regressors are scored ex ante, with forecasts of their future values. Ex-post scores (actual future values) are labelled as such and used only to isolate model error.
+   - Regressors are scored ex ante, with forecasts of their future values. Ex-post scores (actual future values) are labelled as such and used only to isolate model error. Ex-post and scenario intervals leave out the uncertainty in the predictors, so their coverage reads better than production will.
    - Hyperparameters, the model list and ensemble weights were chosen on earlier data than the final test origins.
    - If data arrives late in production, the backtest skips the same gap: score from horizon latency + 1.
    - Data revisions: the backtest uses the values that were known at each origin when they differ from today's.
 
-4. **Set the rolling origins.** Expanding window by default; sliding window (`input_size`) when old data describes a different process. Done when there are at least 10 origins spanning every season, the first training window holds at least two full seasons, and each window's horizon covers the longest one that ships.
+4. **Set the rolling origins.** Expanding window by default; sliding window (`input_size`) when old data describes a different process. Done when there are at least 10 origins spanning every season, the first training window holds at least two full seasons, and each window's horizon covers the longest one that ships. The origins together should hold out about 20% of the sample, and never less than the longest horizon.
 
 5. **Score per horizon.** Score each model at each h separately, from every origin. Done when there is a table model × h with the bar as a row, for the primary point metric, the distributional metric, and coverage at every shipped level. Coverage should sit within a few points of nominal. Under-coverage means intervals are too narrow: switch that model to conformal intervals and score it again on the same origins.
 
@@ -36,8 +36,8 @@ Work the seven steps in order. A model moves to the next step only when the curr
 ## Selection rules
 
 - **Skill**: skill = (score_bar - score_model) / score_bar on the primary metric, per horizon.
-- **AICc only inside one family.** AICc compares models fitted to the same data with the same transform and the same differencing, such as ETS variants or ARIMA orders with fixed d and D. Between families (ETS against ARIMA), between transforms or between differencing orders, only backtest scores count.
-- **Ties.** For two close models, take the per-origin difference in score. If its mean is within about two standard errors of zero, call it a tie; the Diebold-Mariano test is the formal version, and it corrects for the overlap between multi-step errors. On a tie, ship the simpler model or the mean of the tied models.
+- **AICc only inside one family.** AICc compares models fitted to the same data with the same transform and the same differencing, such as ETS variants or ARIMA orders with fixed d and D. Between families (ETS against ARIMA, whose likelihoods are computed differently), between transforms or between differencing orders, only backtest scores count. For choosing regressors, use AICc or leave-one-out CV, never R² or adjusted R²; they overselect. Fit all subsets when feasible, backward stepwise otherwise.
+- **Ties.** For two close models, take the per-origin difference in score. If its mean is within about two standard errors of zero, call it a tie. (This test and the Diebold-Mariano version, which corrects for overlap between multi-step errors, go beyond FPP3, whose rule is simply the lowest cross-validated score.) On a tie, ship the simpler model or the mean of the tied models.
 - **Many series.** Report the mean and the median of the scaled score, and the share of series where each model beats the bar. A mean carried by a handful of series is not a general win.
 - **Selection is itself fitted.** Choosing the best of many models per series overfits the choice, most of all on short histories. Prefer one model for a whole group of similar series, or a combination, unless per-series winners hold up on later origins.
 - **Refit to ship.** The winner is refit on all the data before forecasting.

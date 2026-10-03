@@ -6,13 +6,13 @@ Reference for step 3 of [SKILL.md](SKILL.md).
 
 | Plot | Shows | Decides |
 | --- | --- | --- |
-| Time plot | Level, trend, variance growth, breaks, outliers | Transform? Stable enough to model? |
+| Time plot | Level, trend, variance growth, breaks, outliers | Transform? Additive or multiplicative seasonality (does the swing scale with the level)? |
 | Seasonal plot (one line per year) | Seasonal shape and drift | Fixed or evolving seasonality |
-| Subseries plot (one panel per month or weekday) | Change in each season's mean | Additive or multiplicative |
+| Subseries plot (one panel per month or weekday) | Each season's mean and how it drifts over the years | Which seasons are changing |
 | Lag plot | y(t) against y(t-k) | Which lags carry signal |
 | ACF | Correlation at every lag | Period, trend, white noise |
 
-Reading an ACF: slow decay from lag 1 is trend, spikes at multiples of m are seasonality, both together give a decaying scalloped shape. White noise stays inside about ±2/√T.
+Reading an ACF: slow decay from lag 1 is trend, spikes at multiples of m are seasonality, both together give a decaying scalloped shape. White noise stays inside about ±2/√T (the book's bound is 1.96/√T); treat the series as not white noise when clearly more than 5% of spikes fall outside.
 
 ## White noise test
 
@@ -23,7 +23,8 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 from statsmodels.tsa.stattools import acf
 
 acf_vals = acf(y, nlags=3 * m)
-acorr_ljungbox(y, lags=[2 * m], return_df=True)
+lag = min(2 * m if m > 1 else 10, len(y) // 5)
+acorr_ljungbox(y, lags=[lag], return_df=True)
 ```
 
 ## Features for many series
@@ -45,7 +46,7 @@ The `tsfeatures` package computes these and more at scale.
 
 Use it when seasonal swings grow with the level. Lambda 0 is a log, 1 is no change. The goal is a lambda that makes seasonal amplitude constant across the plot, rounded to something readable (0, 0.5). scipy picks lambda by likelihood, which targets normality; treat it as a starting value and check it on the plot (FPP3 uses the Guerrero method).
 
-Back-transforming a forecast gives the median. When forecasts will be summed or a mean is needed, apply the bias adjustment.
+Back-transforming a forecast gives the median. When forecasts will be summed or a mean is needed, apply the bias adjustment; `sigma2_h` is the h-step forecast variance on the transformed scale. Intervals need no adjustment: compute them on the transformed scale and back-transform the endpoints, which makes them asymmetric.
 
 ```python
 from scipy.stats import boxcox
@@ -60,7 +61,7 @@ fc_mean = fc * (1 + sigma2_h * (1 - lam) / (2 * fc ** (2 * lam)))
 
 y = T + S + R (additive) or y = T × S × R (multiplicative). Use multiplicative, or a log then additive, when seasonal size scales with level.
 
-STL handles any period, lets the seasonal component evolve and can be robust to outliers. Two knobs:
+STL handles any period, lets the seasonal component evolve and can be robust to outliers. It is additive only (log first for multiplicative) and ignores trading-day and calendar effects, which X-11 handles. Two knobs:
 
 - `trend`: window for trend smoothness.
 - `seasonal`: how fast the seasonal pattern may change. A large odd number such as 13 allows slow drift; smaller lets it move faster.
@@ -72,6 +73,6 @@ res = STL(y, period=12, seasonal=13, trend=23, robust=True).fit()
 seasadj = y - res.seasonal
 ```
 
-Seasonally adjusted data is for spotting turning points and for forecasting with a non-seasonal model before adding seasonality back (see decomposition forecasting in [MODELS.md](MODELS.md)). When the seasonal pattern is the thing being forecast, model the raw series.
+Seasonally adjusted data still holds the remainder, so it is noisy and its ups and downs mislead. Use the trend-cycle component to spot turning points, and the seasonally adjusted series to forecast with a non-seasonal model before adding seasonality back (see decomposition forecasting in [MODELS.md](MODELS.md)). When the seasonal pattern is the thing being forecast, model the raw series.
 
 X-13/SEATS is what statistical agencies use for monthly and quarterly official data. Classical decomposition is outdated; use STL.

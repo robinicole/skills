@@ -14,7 +14,9 @@ The Python stack is Nixtla (`statsforecast`, `utilsforecast`, `hierarchicalforec
 
 ## 1. Frame the problem
 
-Pin down the quantity, the granularity (SKU-week, store-day), the horizon, and who uses the numbers for what decision.
+Pin down the quantity, the granularity (SKU-week, store-day), the horizon, and who uses the numbers for what decision. Talk to the people who collect the data and the people who will use the forecasts; their knowledge of breaks, promotions and definitions is data too.
+
+Check that the thing is forecastable. Predictability rests on four things: how well the drivers are understood, how much data there is, whether the future resembles the past, and whether the forecast itself changes the outcome. A quantity that reacts to its own forecast (a price in an efficient market) is a coin toss and the honest answer is a naive forecast with a wide interval.
 
 Done when you can write one sentence of the form "forecast X per Y, Z periods ahead, as a point plus an N% interval, used for W". Ask the user for any part you cannot fill.
 
