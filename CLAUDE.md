@@ -4,7 +4,7 @@
 
 ### Issue tracker
 
-Issues live in this repo's GitHub Issues; external PRs are not a triage surface. See `docs/agents/issue-tracker.md`.
+Issues live as local markdown files under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
