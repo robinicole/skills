@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "robinicole-skills",
+  "description": "Plugins kept in this repo.",
+  "owner": {
+    "name": "Robin Nicole"
+  },
+  "plugins": [
+    {
+      "name": "forecasting",
+      "description": "Skills for making, checking and scoring forecasts.",
+      "source": "./forecasting"
+    }
+  ]
+}

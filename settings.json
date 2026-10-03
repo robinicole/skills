@@ -112,8 +112,7 @@
     "learning-opportunities@learning-opportunities": true,
     "orient@learning-opportunities": true,
     "ponytail@ponytail": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "humanizer@humanizer": true
+    "forecasting@robinicole-skills": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -158,16 +157,10 @@
         "repo": "DietrichGebert/ponytail"
       }
     },
-    "understand-anything": {
+    "robinicole-skills": {
       "source": {
         "source": "github",
-        "repo": "Lum1104/Understand-Anything"
-      }
-    },
-    "humanizer": {
-      "source": {
-        "source": "github",
-        "repo": "blader/humanizer"
+        "repo": "robinicole/skills"
       }
     }
   },
