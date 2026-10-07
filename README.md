@@ -8,7 +8,7 @@ My Claude Code config — `settings.json`, the plugins it enables, and a couple 
 git clone git@github.com:robinicole/skills.git ~/.claude
 ```
 
-Skills in `~/.claude/skills/` work in every project. Invoke with `/<name>`. `karpathy-guidelines` and `writing-great-skills` live there; everything else comes from plugins (below).
+Skills in `~/.claude/skills/` work in every project. Invoke with `/<name>`. `karpathy-guidelines`, `writing-great-skills` and `asd-ste100` live there; everything else comes from plugins (below). `asd-ste100` is vendored from [danyuchn/asd-ste100-skill](https://github.com/danyuchn/asd-ste100-skill) (MIT, commit `32511c6`) — rewrites text in Simplified Technical English so an agent cannot misread it.
 
 ## Matt Pocock's skills
 
