@@ -3,7 +3,7 @@
     "allow": [],
     "defaultMode": "auto"
   },
-  "model": "fable[1m]",
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -111,6 +111,7 @@
     "learning-opportunities@learning-opportunities": true,
     "orient@learning-opportunities": true,
     "ponytail@ponytail": true,
+    "core@robinicole-skills": true,
     "forecasting@robinicole-skills": true,
     "humanizer@humanizer": true,
     "mattpocock-skills@claude-plugins-official": true,

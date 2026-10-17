@@ -16,7 +16,7 @@ Single-context: one `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/age
 
 ## Coding guidelines
 
-From the Karpathy guidelines (`skills/karpathy-guidelines/SKILL.md`). For trivial tasks, use judgment.
+From the Karpathy guidelines (`plugins-src/core/skills/karpathy-guidelines/SKILL.md`). For trivial tasks, use judgment.
 
 ### Think before coding
 

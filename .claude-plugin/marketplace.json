@@ -7,9 +7,14 @@
   },
   "plugins": [
     {
+      "name": "core",
+      "description": "Coding guidelines, skill writing, and Simplified Technical English rewrites.",
+      "source": "./plugins-src/core"
+    },
+    {
       "name": "forecasting",
       "description": "Skills for making, checking and scoring forecasts.",
-      "source": "./forecasting"
+      "source": "./plugins-src/forecasting"
     }
   ]
 }

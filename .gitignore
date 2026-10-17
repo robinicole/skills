@@ -34,3 +34,7 @@ daemon-auth-cooldown
 # local secrets/config
 .credentials.json
 settings.local.json
+
+# claude.ai synced skills, runtime state
+skills/synced/
+state/
