@@ -5,8 +5,12 @@ My Claude Code config — `settings.json` and the plugins it enables. Every skil
 ## Install
 
 ```sh
-git clone git@github.com:robinicole/skills.git ~/.claude
+SKILLS_DIR=/path/to/skills   # wherever you want the clone
+git clone git@github.com:robinicole/skills.git "$SKILLS_DIR"
+for f in settings.json CLAUDE.md docs; do ln -sfn "$SKILLS_DIR/$f" ~/.claude/$f; done
 ```
+
+`~/.claude` is not a git repo: it holds symlinks to `settings.json`, `CLAUDE.md` and `docs/` here. Edit and commit in this repo.
 
 Nothing goes in `~/.claude/skills/` — write skills inside a plugin in `plugins-src/` (see below).
 
