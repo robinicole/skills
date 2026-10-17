@@ -1,49 +1,49 @@
 # skills
 
-My Claude Code config — `settings.json` and the plugins it enables. Every skill I write ships as a plugin under `plugins-src/`; this repo is also the `robinicole-skills` marketplace.
+My Claude Code skills and config. Every skill I write ships as a plugin under `plugins-src/`, and this repo doubles as the `robinicole-skills` marketplace.
 
 ## Install
 
 ```sh
 SKILLS_DIR=/path/to/skills   # wherever you want the clone
 git clone git@github.com:robinicole/skills.git "$SKILLS_DIR"
-for f in settings.json CLAUDE.md docs; do ln -sfn "$SKILLS_DIR/$f" ~/.claude/$f; done
+for f in CLAUDE.md docs; do ln -sfn "$SKILLS_DIR/$f" ~/.claude/$f; done
 ```
 
-`~/.claude` is not a git repo: it holds symlinks to `settings.json`, `CLAUDE.md` and `docs/` here. Edit and commit in this repo.
+`~/.claude` holds symlinks to `CLAUDE.md` and `docs/` in this repo, so edit and commit here. `~/.claude/settings.json` is a plain local file and is not tracked.
 
-Nothing goes in `~/.claude/skills/` — write skills inside a plugin in `plugins-src/` (see below).
+Nothing goes in `~/.claude/skills/`. Write skills inside a plugin in `plugins-src/` (see below).
 
 ## Matt Pocock's skills
 
 [Matt Pocock's engineering skills](https://github.com/mattpocock/skills) come from the `mattpocock-skills` plugin in the official marketplace. Invoke as `/mattpocock-skills:<name>` (or `/<name>` when no other skill shares the name).
 
-In a project repo, run `/setup-matt-pocock-skills` once — it records that repo's issue tracker, triage labels, and domain-doc layout under `docs/agents/`. Lost? `/ask-matt` routes you.
+In a project repo, run `/setup-matt-pocock-skills` once. It records that repo's issue tracker, triage labels and domain-doc layout under `docs/agents/`. If you don't know which skill to use, `/ask-matt` picks one.
 
-**Plan** — `/grilling` stress-tests a plan by interviewing you (`/grill-me`, `/grill-with-docs` are shortcuts) · `/wayfinder` charts work too big for one session · `/to-spec` turns this conversation into a PRD · `/to-tickets` breaks a plan into tickets with blocking edges · `/prototype` answers one design question with throwaway code · `/research` sends a background agent to read primary sources.
+**Plan:** `/grilling` stress-tests a plan by interviewing you (`/grill-me`, `/grill-with-docs` are shortcuts) · `/wayfinder` charts work too big for one session · `/to-spec` turns this conversation into a PRD · `/to-tickets` breaks a plan into tickets with blocking edges · `/prototype` answers one design question with throwaway code · `/research` sends a background agent to read primary sources.
 
-**Build** — `/implement` works from a spec or tickets · `/tdd` runs the red-green loop · `/diagnosing-bugs` for hard bugs and perf regressions · `/code-review` checks a diff against repo standards and the originating spec · `/core:karpathy-guidelines` guards the usual LLM coding failure modes.
+**Build:** `/implement` works from a spec or tickets · `/tdd` runs the red-green loop · `/diagnosing-bugs` for hard bugs and perf regressions · `/code-review` checks a diff against repo standards and the originating spec · `/core:karpathy-guidelines` guards against the usual LLM coding mistakes.
 
-**Shape** — `/codebase-design` is the deep-module vocabulary · `/improve-codebase-architecture` scans for deepening opportunities and grills through one · `/domain-modeling` builds the ubiquitous language and records ADRs.
+**Shape:** `/codebase-design` is the deep-module vocabulary · `/improve-codebase-architecture` scans for deepening opportunities and grills through one · `/domain-modeling` builds the ubiquitous language and records ADRs.
 
-**Meta** — `/triage` moves issues and external PRs through a state machine · `/handoff` compacts a conversation for a fresh agent · `/teach` learns a topic across sessions · `/core:writing-great-skills` on writing one that behaves predictably.
+**Meta:** `/triage` moves issues and external PRs through a state machine · `/handoff` compacts a conversation for a fresh agent · `/teach` learns a topic across sessions · `/core:writing-great-skills` covers writing skills that behave predictably.
 
 The plugin's `skills/*/SKILL.md` files are the real documentation.
 
 ## Plugins in this repo
 
-Each folder in `plugins-src/` is a plugin listed in `.claude-plugin/marketplace.json` and enabled in `settings.json`. (Not `plugins/` — that's Claude Code's own cache dir.)
+Each folder in `plugins-src/` is a plugin listed in `.claude-plugin/marketplace.json` and enabled in `~/.claude/settings.json`. (Not `plugins/`, which is Claude Code's own cache dir.)
 
 | Plugin | Skills |
 |---|---|
-| `core` | general skills — see `plugins-src/core/README.md` |
-| `forecasting` | `forecast`, `backtest`, `reconcile` — see `plugins-src/forecasting/README.md` |
+| `core` | `ponytail` (plus `-audit`, `-review`, `-debt`, `-gain`, `-help`), `no-ai-slop`, `karpathy-guidelines`, `writing-great-skills`, `asd-ste100`, `i-have-adhd`, see `plugins-src/core/README.md` |
+| `forecasting` | `forecast`, `backtest`, `reconcile`, see `plugins-src/forecasting/README.md` |
 
-New skill: `plugins-src/<plugin>/skills/<name>/SKILL.md`. New plugin: `plugins-src/<plugin>/.claude-plugin/plugin.json` plus an entry in `marketplace.json` and `<plugin>@robinicole-skills: true` in `settings.json`. Check with `claude plugin validate .`. The marketplace source is GitHub, so push, then `/plugin marketplace update robinicole-skills`.
+New skill: `plugins-src/<plugin>/skills/<name>/SKILL.md`. New plugin: `plugins-src/<plugin>/.claude-plugin/plugin.json` plus an entry in `marketplace.json` and `<plugin>@robinicole-skills: true` in `~/.claude/settings.json`. Check with `claude plugin validate .`. The marketplace source is GitHub, so push, then `/plugin marketplace update robinicole-skills`.
 
-## Plugins
+## Adding plugins
 
-Two keys in `settings.json`: a source under `extraKnownMarketplaces`, then `<plugin>@<marketplace>: true` under `enabledPlugins`. Restart Claude Code after editing.
+Two keys in `~/.claude/settings.json`: a source under `extraKnownMarketplaces`, then `<plugin>@<marketplace>: true` under `enabledPlugins`. Restart Claude Code after editing.
 
 ```json
 "extraKnownMarketplaces": { "humanizer": { "source": { "source": "github", "repo": "blader/humanizer" } } },

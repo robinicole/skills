@@ -29,4 +29,4 @@ Invoke it as `/forecasting:<name>`.
 
 ## Enabling the plugin
 
-`settings.json` at the repo root registers this repo as the `robinicole-skills` marketplace and enables `forecasting@robinicole-skills`. Claude Code pulls the plugin from GitHub, so a new skill shows up after you push it and run `/plugin marketplace update robinicole-skills`.
+`~/.claude/settings.json` registers this repo as the `robinicole-skills` marketplace and enables `forecasting@robinicole-skills`. Claude Code pulls the plugin from GitHub, so a new skill shows up after you push it and run `/plugin marketplace update robinicole-skills`.
