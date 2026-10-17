@@ -8,7 +8,7 @@ My Claude Code config — `settings.json` and the plugins it enables. Every skil
 git clone git@github.com:robinicole/skills.git ~/.claude
 ```
 
-Nothing goes in `~/.claude/skills/` — write skills inside a plugin in `plugins-src/` (see below). `asd-ste100` (in `core`) is vendored from [danyuchn/asd-ste100-skill](https://github.com/danyuchn/asd-ste100-skill) (MIT, commit `32511c6`) — rewrites text in Simplified Technical English so an agent cannot misread it.
+Nothing goes in `~/.claude/skills/` — write skills inside a plugin in `plugins-src/` (see below).
 
 ## Matt Pocock's skills
 
@@ -32,7 +32,7 @@ Each folder in `plugins-src/` is a plugin listed in `.claude-plugin/marketplace.
 
 | Plugin | Skills |
 |---|---|
-| `core` | `karpathy-guidelines`, `writing-great-skills`, `asd-ste100` |
+| `core` | general skills — see `plugins-src/core/README.md` |
 | `forecasting` | `forecast`, `backtest`, `reconcile` — see `plugins-src/forecasting/README.md` |
 
 New skill: `plugins-src/<plugin>/skills/<name>/SKILL.md`. New plugin: `plugins-src/<plugin>/.claude-plugin/plugin.json` plus an entry in `marketplace.json` and `<plugin>@robinicole-skills: true` in `settings.json`. Check with `claude plugin validate .`. The marketplace source is GitHub, so push, then `/plugin marketplace update robinicole-skills`.
@@ -42,27 +42,23 @@ New skill: `plugins-src/<plugin>/skills/<name>/SKILL.md`. New plugin: `plugins-s
 Two keys in `settings.json`: a source under `extraKnownMarketplaces`, then `<plugin>@<marketplace>: true` under `enabledPlugins`. Restart Claude Code after editing.
 
 ```json
-"extraKnownMarketplaces": { "ponytail": { "source": { "source": "github", "repo": "DietrichGebert/ponytail" } } },
-"enabledPlugins": { "ponytail@ponytail": true }
+"extraKnownMarketplaces": { "humanizer": { "source": { "source": "github", "repo": "blader/humanizer" } } },
+"enabledPlugins": { "humanizer@humanizer": true }
 ```
 
 Or from the terminal, which edits `settings.json` for you:
 
 ```sh
-claude plugin marketplace add DietrichGebert/ponytail
 claude plugin marketplace add blader/humanizer
 claude plugin marketplace add https://github.com/DrCatHicks/learning-opportunities.git
 claude plugin marketplace add https://github.com/DrCatHicks/learning-goal.git
-claude plugin marketplace add ayghri/i-have-adhd
 claude plugin marketplace add robinicole/skills
 claude plugin marketplace add anthropics/claude-plugins-official
 
-claude plugin install ponytail@ponytail
 claude plugin install humanizer@humanizer
 claude plugin install learning-opportunities@learning-opportunities
 claude plugin install orient@learning-opportunities
 claude plugin install learning-goal@learning-goal
-claude plugin install i-have-adhd@i-have-adhd
 claude plugin install core@robinicole-skills
 claude plugin install forecasting@robinicole-skills
 claude plugin install mattpocock-skills@claude-plugins-official
@@ -74,9 +70,7 @@ Inside a session, the same thing is `/plugin marketplace add <source>` and `/plu
 |---|---|---|
 | `core` | github `robinicole/skills` | `/core:<name>` |
 | `forecasting` | github `robinicole/skills` | `/forecasting:<name>` |
-| `ponytail` | github `DietrichGebert/ponytail` | `/ponytail [lite\|full\|ultra]` |
 | `humanizer` | github `blader/humanizer` | `/humanizer` |
-| `i-have-adhd` | github `ayghri/i-have-adhd` | `/i-have-adhd` |
 | `learning-opportunities` | git `DrCatHicks/learning-opportunities.git` | `/learning-opportunities`, `/orient` |
 | `learning-goal` | git `DrCatHicks/learning-goal.git` | `/learning-goal` |
 | `mattpocock-skills` | github `anthropics/claude-plugins-official` | `/mattpocock-skills:<name>` |
