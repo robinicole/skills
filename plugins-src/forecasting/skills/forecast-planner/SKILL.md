@@ -44,7 +44,8 @@ the user's time.
 
 Ask, one at a time, only what is still unknown:
 
-- Frequency and seasonal period m; length of history in full seasons.
+- Frequency and seasonal period m; length of history in full seasons; the date of
+  the last observation against the date of the decision.
 - Forecast horizon h in periods, and how often the forecast is refreshed.
 - Granularity and hierarchy: do series add up (product, store, region, total)?
 - Known drivers whose future values are known or can be forecast (calendar,

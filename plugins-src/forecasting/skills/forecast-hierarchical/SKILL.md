@@ -33,6 +33,10 @@ each level.
    A wrong structure is FATAL.
 2. Look at a series from each level. Why: the top is smooth and seasonal, the
    bottom noisy and often intermittent. The base model may need to differ by level.
+3. Residual check on the base models, at least for every series at the levels the
+   decision uses: loop `residual_check(resid, m, dof, name, plot=False)` and report
+   the share that pass per level. Why: MinT weights series by their errors; a base
+   model that misses structure passes its error into the reconciled forecasts.
 
 ## Stage 3: Implementation
 
@@ -53,13 +57,19 @@ each level.
 - Scale-free accuracy (MASE, RMSSE) per level with
   `hierarchicalforecast.evaluation.evaluate(..., tags=tags)`, base against each
   reconciled version. Why: reconciliation can help most levels and lose at some.
-- Repeat over several forecast origins before deciding.
-- Negative reconciled values on non-negative data: `MinTrace(..., nonnegative=True)`.
+- Repeat over several forecast origins before deciding. The template's section 6
+  runs four origins (cutoff = last training date); widen it for a decision, and
+  count the origins where each method beats the base forecasts per level.
+- Interval coverage per level against nominal. Why: reconciled intervals at the
+  top are often too narrow.
+- Negative reconciled values on non-negative data: `MinTrace(..., nonnegative=True)`,
+  and score that setting on the same origins before shipping it.
 
 ## Verification gate
 
-Apply `workflow.md`. Quote the structure (series per level), the coherence gap,
-and accuracy per level for base and reconciled forecasts.
+Apply `workflow.md`. Quote the structure (series per level), the base residual
+pass rate per level, the coherence gap, accuracy per level over several forecast
+origins, and coverage per level.
 
 ## Stage 5: Interpretation and handoff
 

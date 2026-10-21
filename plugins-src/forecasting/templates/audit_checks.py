@@ -59,8 +59,25 @@ def check_cv_design(cv: pd.DataFrame, train_df: pd.DataFrame, m: int) -> list[di
                            f"First training window has {n_first} points, under two seasons ({2 * m})."))
     leak = cv.merge(train_df[["unique_id", "ds"]], on=["unique_id", "ds"])
     if (leak["ds"] <= leak["cutoff"]).any():
-        out.append(finding("2 Data", "leakage", "fatal", "Some test rows are at or before their cutoff."))
+        out.append(finding("2 Data", "leakage", "fatal",
+                           "Some test rows are at or before their cutoff. The check assumes the "
+                           "statsforecast convention: cutoff = last training date. If your frame "
+                           "stores the first test date as cutoff, convert it and run again."))
     return out
+
+
+def check_origin_seasons(cv: pd.DataFrame, train_df: pd.DataFrame, m: int) -> list[dict]:
+    """Forecast origins should fall in every season, or errors that depend on the
+    starting season go unseen."""
+    if m <= 1:
+        return []
+    dates = pd.Index(sorted(train_df["ds"].unique()))
+    pos = {int(dates.get_loc(c)) % m for c in cv["cutoff"].unique()}
+    if len(pos) < m:
+        return [finding("4 Evaluation", "origin seasons", "minor",
+                        f"Forecast origins fall in {len(pos)} of {m} seasons; use step_size=1 "
+                        "or a step that shares no factor with m.")]
+    return []
 
 
 def check_skill(scores: pd.DataFrame, metric: str = "mase") -> list[dict]:
@@ -165,6 +182,7 @@ if __name__ == "__main__":
     f += check_horizon(decision_h, evaluated_h=int(add_horizon(cv)["h"].max()), forecast_h=8)
     f += check_baseline(cv)
     f += check_cv_design(cv, gas, m)
+    f += check_origin_seasons(cv, gas, m)
     f += check_skill(scores)
     f += check_metric_scale("mase", n_series=1)
     f += check_calibration(cv, levels)

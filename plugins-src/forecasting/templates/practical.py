@@ -55,7 +55,7 @@ sf_int = StatsForecast(models=[CrostonClassic(), CrostonSBA(), TSB(alpha_d=0.2, 
                                Naive(), HistoricAverage()], freq="MS")
 
 # %% 4 Model fit
-cv_int = sf_int.cross_validation(df=v07, h=6, n_windows=12, step_size=3)
+cv_int = sf_int.cross_validation(df=v07, h=6, n_windows=12, step_size=1)
 from utilsforecast.evaluation import evaluate
 from utilsforecast.losses import mae, rmse
 res_int = evaluate(cv_int, metrics=[mae, rmse]).groupby("metric").mean(numeric_only=True)
@@ -104,7 +104,7 @@ print("Interpolated values at the gaps:", np.exp(sar.predict()[[200, 201, 350]])
       "true:", np.exp(cafe_log["y"].to_numpy()[[200, 201, 350]]).round(1))
 
 # %% 6 Evaluation with time series cross-validation
-cv = sf_comb.cross_validation(df=cafe_log, h=12, n_windows=6, step_size=6)
+cv = sf_comb.cross_validation(df=cafe_log, h=12, n_windows=12, step_size=1)
 cv["Combination"] = cv[["ETS", "ARIMA", "STL_ETS"]].mean(axis=1)
 pt = cv[["unique_id", "ds", "cutoff", "y", "ETS", "ARIMA", "STL_ETS", "SeasonalNaive", "Combination"]]
 print("Combination versus members (log scale, pooled):\n",

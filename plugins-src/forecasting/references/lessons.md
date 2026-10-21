@@ -74,3 +74,33 @@ Format:
 **Mistake**: Calling a curved trend a structural break.
 **Rule**: Treat the test as a prompt to look at the time plot, not as a finding.
 **Source**: audit_checks.py run on gas production, 2026-10-21.
+
+### ETS: Noisy early history drives the model choice
+**Trigger**: A long series whose early, low-level years are much noisier in relative terms.
+**Mistake**: Taking the AICc choice on the full history (ETS(M,A,M) on gas production); residuals failed Ljung-Box and the intervals were far too wide.
+**Rule**: Plot the innovation residuals over time. If their spread changes, compare training windows by cross-validation on the same origins, and say the window was chosen after seeing results.
+**Source**: Self-audit run of forecast-ets on aus_production Gas, 2026-10-21.
+
+### Hierarchical: Base residuals and per-level coverage skipped
+**Trigger**: Many base series (hundreds) in a reconciliation run.
+**Mistake**: The self-audit run reconciled 425 ETS models without residual checks and found the total's 80% interval covered under half the time.
+**Rule**: Report the residual pass rate per level and interval coverage per level; both are in the verification gate.
+**Source**: Self-audit run of forecast-hierarchical on tourism, 2026-10-21.
+
+### All: Forecast origin years before the decision
+**Trigger**: Book datasets, or any extract that stops long before today.
+**Mistake**: Both self-audit runs issued forecasts for periods that had already happened (2010 to 2012, 2018 to 2019) as inputs to a decision made in 2026.
+**Rule**: Compare the last observation date with the decision date before modelling. Get newer data, or label the work as a backtest or an exercise.
+**Source**: forecast-auditor self-audit, 2026-10-21.
+
+### All: Model chosen on the origins that report its accuracy
+**Trigger**: Choosing a training window, form or reconciliation method by cross-validation, then quoting the same scores.
+**Mistake**: The quoted skill over the benchmark is the best of several tries, so it is optimistic.
+**Rule**: Report accuracy on later origins that the choice did not use, or the range over all options; give the count of origins won.
+**Source**: forecast-auditor self-audit, 2026-10-21.
+
+### Baselines: Step size that skips seasons
+**Trigger**: `step_size` that shares a factor with m (2 with quarterly data, 3 or 6 with monthly).
+**Mistake**: Every forecast origin falls in the same few seasons.
+**Rule**: Use `step_size=1`, or a step with no common factor with m. `audit_checks.check_origin_seasons` flags it.
+**Source**: forecast-auditor self-audit, 2026-10-21.

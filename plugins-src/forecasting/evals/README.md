@@ -33,3 +33,10 @@ plugins installed for the user stay loaded, so the test also shows competition
 from them.
 
 Outputs go to `runs/`, which git ignores.
+
+## Self-audit
+
+`self-audit/` holds two headless runs made with `claude -p --plugin-dir`: the ETS
+skill on gas production and the hierarchical skill on tourism, each followed by
+the auditor skill. They are evidence for the changes listed in `NOTES.md`, not
+templates. Their numbers come from the book data, which end in 2010 and 2017.

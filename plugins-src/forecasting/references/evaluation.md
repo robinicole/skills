@@ -12,6 +12,12 @@ points here. Book: FPP3 5.8 to 5.10 [unverified sections].
    test set, when the series is long enough.
 4. Compare every model with the benchmarks on the same origins.
 5. Choose the metric before you look at the results.
+6. Keep choosing and reporting apart. When cross-validation chooses a model form, a
+   training window or a transformation, report accuracy on later forecast origins
+   that the choice did not use, or report the range over all the options tried.
+7. Report how sure the gain is: the number of origins where the model beats the
+   benchmark, and the spread of the difference across origins. Overlapping test
+   windows are not independent evidence.
 
 ## Test set
 
@@ -27,7 +33,9 @@ data describe a different process.
 
 Checks before you trust the result:
 
-- Enough origins (10 or more where the data allow) spread over the seasons.
+- Enough origins (10 or more where the data allow).
+- Origins in every season: use `step_size=1`, or a step that shares no factor with
+  m. A step of 2 with quarterly data starts every forecast in the same two quarters.
 - First training window at least two full seasons long.
 - Test rows always after their origin.
 - Predictors: ex-ante (forecast) values for the headline score; ex-post only to
@@ -86,3 +94,8 @@ the book; pass many levels for a close value).
 - Across families, transformations or differencing orders: cross-validation only.
 - Many series: report mean and median of the scaled measure, and the share of
   series where each model beats the benchmark.
+- Two close models (Not from the book; the book takes the lowest cross-validated
+  score): take the per-origin difference in score. If its mean is within about two
+  standard errors of zero, call it a tie and ship the simpler model or their mean.
+  Diebold and Mariano (1995, Journal of Business and Economic Statistics) give a
+  test that allows for overlapping multi-step errors.

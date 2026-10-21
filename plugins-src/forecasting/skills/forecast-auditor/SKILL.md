@@ -32,7 +32,7 @@ are findings in themselves.
 ## Stage 2: Diagnostics (automated)
 
 Copy `../../templates/audit_checks.py` with `fc_checks.py` and run, on the user's
-outputs: `check_horizon`, `check_baseline`, `check_cv_design`, `check_skill`,
+outputs: `check_horizon`, `check_baseline`, `check_cv_design`, `check_origin_seasons`, `check_skill`,
 `check_metric_scale`, `check_calibration`, `check_residuals`, `check_break`.
 `report(findings)` sorts them by severity. Treat `check_break` as a prompt to look
 at the time plot.

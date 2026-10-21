@@ -122,7 +122,7 @@ for (dd, DD), names in groups.items():
 sf = StatsForecast(models=[AutoARIMA(season_length=12, alias="ARIMA"),
                            AutoETS(season_length=12, alias="ETS"), *base_h02],
                    freq=freq("PBS"))
-cv_log = sf.cross_validation(df=h02_log, h=12, n_windows=8, step_size=3, level=LEVELS)
+cv_log = sf.cross_validation(df=h02_log, h=12, n_windows=12, step_size=1, level=LEVELS)
 cv = cv_log.copy()
 value_cols = [c for c in cv.columns if c not in ("unique_id", "ds", "cutoff")]
 cv[value_cols] = np.exp(cv[value_cols])

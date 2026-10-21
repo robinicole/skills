@@ -176,6 +176,34 @@ folder. Results vary between runs: explore explicit 1 passed in a targeted rerun
 and failed in the full run. Pushing the descriptions harder risks triggering on
 unrelated prompts; left as is.
 
+## Self-audit (Phase 4 step 6)
+
+Headless runs with `claude -p --plugin-dir`, outputs in `evals/self-audit/`:
+
+| Run | Turns | Cost (USD) | Result |
+|---|---|---|---|
+| forecast-ets on aus_production Gas, h = 8 | 11 | 0.42 | ETS(A,A,A) on 1980+, beats seasonal naive per forecast horizon, residuals white |
+| forecast-auditor on that run | 7 | 0.34 | Red: 1 fatal (forecast origin 2010, decision 2026), 4 serious, 3 minor |
+| forecast-hierarchical on tourism, h = 8 | 12 | 0.37 | Grouped, 425 series, MinT-OLS non-negative; six origins; coherence gap 0 |
+| forecast-auditor on that run | 10 | 0.35 | Red: 1 fatal (same data-age issue), 4 serious, 4 minor |
+
+Skill and template changes made because of these audits:
+
+- `workflow.md`: new "Forecast origin" rule; planner asks for the last
+  observation date against the decision date.
+- `evaluation.md`: keep choosing and reporting apart; report origins won and the
+  spread; origins in every season; tie rule (Not from the book, Diebold-Mariano cited).
+- `forecast-ets`: refit all forms after changing the training window.
+- `forecast-hierarchical`: residual pass rate per level, coverage per level,
+  back-test `nonnegative=True`, multi-origin evaluation.
+- Templates: `step_size=1` in `ets.py`, `arima.py`, `practical.py`; four-origin
+  evaluation with per-level coverage in `hierarchical.py`;
+  `audit_checks.check_origin_seasons`; the leakage message states the cutoff convention.
+- `references/lessons.md`: five lessons from these runs.
+
+The fatal finding in both audits comes from the book data ending in 2010 and 2017;
+the prompts did not say the work was an exercise. The auditor was right to flag it.
+
 ## Copyright check
 
 Not possible against the book pages (site blocked). All text was written fresh

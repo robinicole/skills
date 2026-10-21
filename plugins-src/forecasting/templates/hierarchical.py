@@ -34,6 +34,7 @@ from fc_checks import out_dir
 from fpp_data import load
 
 OUT = out_dir()
+pd.set_option("display.width", 250); pd.set_option("display.max_columns", 20)
 LEVELS = [80, 95]
 m, h = 4, 8
 
@@ -102,8 +103,8 @@ for col in ["ETS", "ETS/MinTrace_method-mint_shrink"]:
 
 # %% 6 Evaluation with time series cross-validation
 # Accuracy per level on scale-free measures (RMSE across levels is dominated by
-# the top). One train/test split here; for a decision, repeat over several
-# forecast origins with StatsForecast.cross_validation and reconcile each window.
+# the top). First one train/test split, then four forecast origins below; for a
+# decision, use more origins and check that rankings hold across them.
 def level_scores(R, Y_te, Y_tr, tags):
     df = Y_te.merge(R, on=["unique_id", "ds"])
     models = [c for c in R.columns if c not in ("unique_id", "ds") and "-lo-" not in c and "-hi-" not in c]
@@ -112,8 +113,36 @@ def level_scores(R, Y_te, Y_tr, tags):
 
 
 sh = level_scores(Rh, Yh_te, Yh_tr, tags_h)
+
+# Several forecast origins (grouped structure). cutoff = last training date, as in
+# StatsForecast.cross_validation. Per origin: MASE per level and 80% coverage.
+from utilsforecast.losses import coverage
+dates = np.sort(Yg["ds"].unique())
+N_ORIGINS, STEP = 4, 2
+origin_rows = []
+for k in range(N_ORIGINS):
+    cut = dates[len(dates) - h - (N_ORIGINS - 1 - k) * STEP - 1]       # last training date
+    tr = Yg[Yg["ds"] <= cut]
+    te = Yg[(Yg["ds"] > cut) & (Yg["ds"] <= dates[np.searchsorted(dates, cut) + h])]
+    fc_k, fit_k = base_forecasts(tr)
+    R_k = rec_g.reconcile(Y_hat_df=fc_k, Y_df=fit_k, S_df=Sg, tags=tags_g,
+                          level=[80], intervals_method="normality")
+    models_k = [c for c in R_k.columns if c not in ("unique_id", "ds") and "-lo-" not in c and "-hi-" not in c]
+    sc = evaluate(df=te.merge(R_k, on=["unique_id", "ds"]), tags=tags_g, models=models_k, train_df=tr,
+                  metrics=[partial(mase, seasonality=m), coverage], level=[80])
+    origin_rows.append(sc.assign(cutoff=cut))
+origins = pd.concat(origin_rows, ignore_index=True)
+mase_by_origin = origins[origins["metric"] == "mase"]
+print("Grouped, MASE by level, mean over", N_ORIGINS, "forecast origins:\n",
+      mase_by_origin.groupby("level")[[c for c in mase_by_origin.columns if c.startswith("ETS")] + ["SeasonalNaive"]]
+      .mean().round(3).T)
+wins = (mase_by_origin["ETS/MinTrace_method-mint_shrink"] < mase_by_origin["ETS"]).groupby(mase_by_origin["level"]).sum()
+print("Origins where MinT shrink beats base ETS, per level:", wins.to_dict())
+cov = origins[origins["metric"].str.startswith("coverage")]
+print("80% coverage of MinT shrink, mean over origins, per level:\n",
+      cov.groupby("level")["ETS/MinTrace_method-mint_shrink"].mean().round(2))
+origins.to_csv(OUT / "hier_scores_by_origin.csv", index=False)
 sg = level_scores(Rg, Yg_te, Yg_tr, tags_g)
-pd.set_option("display.width", 250); pd.set_option("display.max_columns", 20)
 print("Hierarchy, MASE by level:\n", sh[sh["metric"] == "mase"].set_index("level").round(3).T)
 print("Grouped, MASE by level:\n", sg[sg["metric"] == "mase"].set_index("level").round(3).T)
 sh.to_csv(OUT / "hier_scores_hierarchy.csv", index=False)

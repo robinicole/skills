@@ -53,6 +53,9 @@ You fit exponential smoothing models and check that they beat the benchmark.
 - Coverage of the intervals against nominal. Under-coverage: switch to conformal
   intervals (`ConformalIntervals(h=h, n_windows=5)`) and score again.
 - Many series: share of series where ETS beats the benchmark.
+- If you change the training window, refit every candidate form on the new window
+  before choosing. Report accuracy on origins not used to choose the window
+  (`evaluation.md`, rule 6).
 
 ## Verification gate
 

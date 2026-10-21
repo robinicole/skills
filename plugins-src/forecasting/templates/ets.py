@@ -91,7 +91,7 @@ fig.tight_layout(); fig.savefig(OUT / "ets_components.png", dpi=120); plt.close(
 sf = StatsForecast(models=[AutoETS(season_length=4, alias="ETS_auto"),
                            AutoETS(season_length=4, model="MAM", damped=True, alias="ETS_MAdM"),
                            *gas_base], freq=freq("aus_production"))
-cv = sf.cross_validation(df=gas, h=8, n_windows=10, step_size=2, level=LEVELS)
+cv = sf.cross_validation(df=gas, h=8, n_windows=12, step_size=1, level=LEVELS)
 scores = score_cv(cv, train_df=gas, m=4, levels=LEVELS)
 print("Gas, pooled CV accuracy:\n",
       score_cv(cv, train_df=gas, m=4, levels=LEVELS, by_h=False).set_index("metric").round(3))

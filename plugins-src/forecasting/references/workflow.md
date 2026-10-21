@@ -23,6 +23,13 @@ Copy templates from the plugin's `templates/` folder into `analysis/`, together
 with `fpp_data.py` and `fc_checks.py`. Change only the data section and the names
 of columns. The templates were run as they are; restructuring them brings bugs.
 
+## Forecast origin
+
+Check the date of the last observation against the date of the decision. A
+forecast whose origin is far before the decision date describes periods that
+have already happened. Get newer data, or label the work as a backtest or an
+exercise.
+
 ## Severity verdicts
 
 Emit a verdict as soon as a check reveals a problem, before any interpretation.
