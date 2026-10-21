@@ -156,6 +156,33 @@ Known gaps between the Python templates and the book's R code:
 | Damped ETS | phi search range per fable | statsforecast bounds phi to [0.8, 0.98] | phi hits 0.8 more often |
 | Deterministic trend example | book restricts the ARIMA error order | AutoARIMA chose ARIMA(2,0,1) errors on aus_airpassengers to 2016 | Different error model; the lesson (narrower intervals) holds |
 
+## Validation results (2026-10-21)
+
+| Check | Result |
+|---|---|
+| Templates (`evals/run_templates.sh`) | 11 of 11 run without errors |
+| Ground truth (`evals/ground_truth.py`, 200 series, n = 1000) | 8 of 8 parameters within tolerance |
+| Trigger, keyword mode | 72 cases, 0 failures, 26 paraphrases informational |
+| Trigger, CLI mode, run 1 | 55 of 72 pass; all 16 no-trigger pass; 17 under-triggers, no wrong skill |
+| Trigger, CLI mode, run 2 (after adding "Also use it for questions about ..." to ten descriptions, 3 turns) | 64 of 72 pass; all 16 no-trigger pass; 8 under-triggers, no wrong skill |
+| `claude plugin validate` | passes; warnings: no icon; `core` plugin has no author |
+| Quotations over 15 words | none |
+
+Remaining CLI under-triggers: four short conceptual questions answered in text
+("MAPE or MASE?", "what does a PACF cut-off at lag 2 suggest?", the simplest
+benchmark, a smoothing method that flattens the trend), and four prompts where
+Claude first tried to list files (Bash, Glob), which the test blocks in an empty
+folder. Results vary between runs: explore explicit 1 passed in a targeted rerun
+and failed in the full run. Pushing the descriptions harder risks triggering on
+unrelated prompts; left as is.
+
+## Copyright check
+
+Not possible against the book pages (site blocked). All text was written fresh
+in my own words from the notes; no single-line quotation over 15 words exists in
+skills, references, notes or README. Open: compare against the pages once they
+are reachable.
+
 ## Unverified
 
 - Every section URL of both editions (slugs in `notes/` are from memory).
