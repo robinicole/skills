@@ -1,0 +1,7 @@
+name: trigger_regression_paraphrase_2
+description: forecast-regression should trigger on a paraphrase prompt
+skill: forecast-regression
+kind: paraphrase
+user_message: Can I model monthly electricity use as a straight-line trend plus a monthly effect and use it to predict next year?
+expected:
+  should_trigger: true

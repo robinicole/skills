@@ -1,0 +1,7 @@
+name: trigger_auditor_paraphrase_1
+description: forecast-auditor should trigger on a paraphrase prompt
+skill: forecast-auditor
+kind: paraphrase
+user_message: Our analyst says the model is 95% accurate. Can you poke holes in how they evaluated it?
+expected:
+  should_trigger: true

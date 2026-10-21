@@ -1,0 +1,7 @@
+name: no_trigger_descriptive_12
+description: No forecasting skill should trigger (descriptive)
+skill: null
+kind: descriptive
+user_message: What was our average order value last quarter, by region?
+expected:
+  should_trigger: false

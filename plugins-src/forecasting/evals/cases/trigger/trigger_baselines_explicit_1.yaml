@@ -1,0 +1,7 @@
+name: trigger_baselines_explicit_1
+description: forecast-baselines should trigger on a explicit prompt
+skill: forecast-baselines
+kind: explicit
+user_message: Set up a seasonal naive baseline forecast and time series cross-validation for my monthly data.
+expected:
+  should_trigger: true

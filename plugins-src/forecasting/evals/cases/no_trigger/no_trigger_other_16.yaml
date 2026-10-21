@@ -1,0 +1,7 @@
+name: no_trigger_other_16
+description: No forecasting skill should trigger (other)
+skill: null
+kind: other
+user_message: Write a SQL query that sums revenue by month.
+expected:
+  should_trigger: false

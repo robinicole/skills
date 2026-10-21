@@ -1,0 +1,7 @@
+name: trigger_explore_explicit_2
+description: forecast-explore should trigger on a explicit prompt
+skill: forecast-explore
+kind: explicit
+user_message: 'Explore my time series of website visits: seasonal plot, ACF plot and any outliers.'
+expected:
+  should_trigger: true

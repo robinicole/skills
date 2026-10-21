@@ -92,8 +92,8 @@ cv = sf.cross_validation(df=df, h=h, step_size=1, n_windows=12, level=[10, 20, 3
 CRPS_LEVELS = [10, 20, 30, 40, 50, 60, 70, 80, 90]
 scores = score_cv(cv, train_df=df, m=m, levels=LEVELS, crps_levels=CRPS_LEVELS)
 overall = score_cv(cv, train_df=df, m=m, levels=LEVELS, crps_levels=CRPS_LEVELS, by_h=False)
-print("Cross-validated accuracy, all horizons pooled:\n", overall.set_index("metric").round(3))
-print("MASE skill against seasonal naive, per horizon:\n",
+print("Cross-validated accuracy, all forecast horizons pooled:\n", overall.set_index("metric").round(3))
+print("MASE skill against seasonal naive, per forecast horizon:\n",
       skill(scores, "mase", "SeasonalNaive").round(3))
 scores.to_csv(OUT / "baselines_cv_scores.csv", index=False)
 

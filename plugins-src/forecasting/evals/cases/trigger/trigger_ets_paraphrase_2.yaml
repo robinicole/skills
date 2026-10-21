@@ -1,0 +1,7 @@
+name: trigger_ets_paraphrase_2
+description: forecast-ets should trigger on a paraphrase prompt
+skill: forecast-ets
+kind: paraphrase
+user_message: My trend forecast keeps shooting upward too far into the future. Is there a smoothing method that flattens the trend out?
+expected:
+  should_trigger: true

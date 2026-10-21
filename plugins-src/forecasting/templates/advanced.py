@@ -42,7 +42,7 @@ logging.getLogger("cmdstanpy").setLevel(logging.WARNING)
 logging.getLogger("prophet").setLevel(logging.WARNING)
 
 
-def holdout_scores(test: pd.DataFrame, fc: pd.DataFrame) -> pd.DataFrame:
+def test_scores(test: pd.DataFrame, fc: pd.DataFrame) -> pd.DataFrame:
     return evaluate(test[["unique_id", "ds", "y"]].merge(fc, on=["unique_id", "ds"]),
                     metrics=[mae, rmse])
 
@@ -81,7 +81,7 @@ X = dp.in_sample().to_numpy()
 dhr = AutoARIMA(season_length=1).fit(hh_train["y"].to_numpy(), X=X[:-H_HH])
 fc_dhr = hh_test[["unique_id", "ds"]].assign(DHR=np.asarray(dhr.predict(h=H_HH, X=X[-H_HH:])["mean"]))
 print("Half-hourly, last week held out:\n",
-      holdout_scores(hh_test, fc_mstl.merge(fc_dhr, on=["unique_id", "ds"])).round(3))
+      test_scores(hh_test, fc_mstl.merge(fc_dhr, on=["unique_id", "ds"])).round(3))
 
 # Prophet (daily demand with temperature and its square, weekly and yearly seasonality).
 H_D = 28
@@ -104,7 +104,7 @@ if not optional_missing:
     dyn = AutoARIMA(season_length=1).fit(d_train["y"].to_numpy(), X=DX[:-H_D])
     fc_dyn = d_test[["unique_id", "ds"]].assign(DynReg=np.asarray(dyn.predict(h=H_D, X=DX[-H_D:])["mean"]))
     print("Daily, last 28 days held out (actual temperatures, so ex-post):\n",
-          holdout_scores(d_test, fc_prophet.merge(fc_dyn, on=["unique_id", "ds"])).round(3))
+          test_scores(d_test, fc_prophet.merge(fc_dyn, on=["unique_id", "ds"])).round(3))
 
 # Vector autoregression: consumption and income, lag order by BIC.
 from statsmodels.tsa.api import VAR
@@ -138,7 +138,7 @@ nn = mlf.predict(h=H_L)
 nn["NNAR"] = nn[list(nets)].mean(axis=1)
 ets_l = StatsForecast(models=[AutoETS(), AutoARIMA()], freq="YS").forecast(df=l_train, h=H_L)
 print(f"NNAR({p_ar},{k}) approximation on lynx, last {H_L} years held out:\n",
-      holdout_scores(l_test, nn[["unique_id", "ds", "NNAR"]].merge(ets_l, on=["unique_id", "ds"])).round(1))
+      test_scores(l_test, nn[["unique_id", "ds", "NNAR"]].merge(ets_l, on=["unique_id", "ds"])).round(1))
 print("NNAR prediction intervals need simulated paths with resampled errors; none are produced here.")
 
 # Bagged ETS: Box-Cox, STL, moving-block bootstrap of the remainder, back-transform,
@@ -163,7 +163,7 @@ fb = StatsForecast(models=[AutoETS(season_length=4)], freq="QS").forecast(df=boo
 bagged = fb.groupby("ds", as_index=False)["AutoETS"].mean().rename(columns={"AutoETS": "BaggedETS"})
 plain = StatsForecast(models=[AutoETS(season_length=4)], freq="QS").forecast(df=c_train, h=H_C)
 print(f"Cement, bagged ETS from {B} bootstrapped series versus ETS:\n",
-      holdout_scores(c_test, plain.merge(bagged.assign(unique_id="Cement"), on=["unique_id", "ds"])).round(1))
+      test_scores(c_test, plain.merge(bagged.assign(unique_id="Cement"), on=["unique_id", "ds"])).round(1))
 
 # %% 5 Diagnostics
 # Covered above per model: Prophet residuals, VAR residuals per equation. Prophet's

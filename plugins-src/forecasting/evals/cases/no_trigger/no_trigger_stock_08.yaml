@@ -1,0 +1,7 @@
+name: no_trigger_stock_08
+description: No forecasting skill should trigger (stock)
+skill: null
+kind: stock
+user_message: Predict tomorrow's Bitcoin price so I can decide whether to sell.
+expected:
+  should_trigger: false

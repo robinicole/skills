@@ -1,0 +1,7 @@
+name: trigger_judgmental_paraphrase_1
+description: forecast-judgmental should trigger on a paraphrase prompt
+skill: forecast-judgmental
+kind: paraphrase
+user_message: I want to gather opinions from five experts on next year's market size without the senior person dominating.
+expected:
+  should_trigger: true

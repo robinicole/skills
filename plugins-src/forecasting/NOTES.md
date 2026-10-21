@@ -120,12 +120,41 @@ What was done instead:
 
 ## Environment
 
-- R 4.4.3 at `/opt/r-env` (conda-forge, because CRAN mirrors are denied). fable
-  0.5.0, feasts 0.5.0, tsibble 1.2.0, fpp3 1.0.3, urca, nnet, forecast.
-  `fable.prophet` is not installed (not checked on conda-forge yet).
-- Python 3.13 venv at `/home/user/.venv-fc`: statsforecast 2.1.1, mlforecast 1.1.0,
-  hierarchicalforecast 1.5.3, utilsforecast 0.2.17, coreforecast 0.0.19,
-  statsmodels 0.15.0, pandas 2.3.3, numpy 2.5.4.
+- Python 3.13 venv: statsforecast 2.1.1, mlforecast 1.1.0, hierarchicalforecast
+  1.5.3, utilsforecast 0.2.17, coreforecast 0.0.19, statsmodels 0.15.0, pandas
+  2.3.3, numpy 2.5.4, scikit-learn 1.9.1, prophet 1.5.0, pyreadr.
+- R 4.4.3 with fable 0.5.0, feasts 0.5.0, tsibble 1.2.0, fpp3 1.0.3 (conda-forge,
+  because CRAN mirrors are denied). After the decision to go Python only, R was used
+  only to read function lists and dataset structures for `notes/`. No R template
+  ships.
+
+## Decisions after Phase 2
+
+See `PLAN.md`: build from the notes, plugin name `forecasting`, Python only, no
+other platform manifests, keyword and CLI trigger runners, book data read from the
+GitHub `.rda` files with pyreadr.
+
+## Parity
+
+Dropped with the Python-only decision: there is no R template to compare with.
+Spot checks against values I remember from the book (all unverified, see below)
+agreed: Algeria exports SES alpha 0.84; Egypt exports ARIMA(2,0,1); H02 candidate
+ARIMA(3,0,1)(0,1,2)[12]; consumption on income with ARIMA(1,0,2) errors, income
+coefficient 0.198; insurance quotes with one lag of TV adverts, coefficients 1.25
+and 0.146, ARIMA(1,0,2) errors; us_change regression coefficients 0.74, 0.047,
+-0.053, -0.17; gas Guerrero lambda 0.11.
+
+Known gaps between the Python templates and the book's R code:
+
+| Item | Book (R) | Python here | Effect |
+|---|---|---|---|
+| NNAR | `NNETAR()` averages 20 networks with its own defaults and simulates intervals | MLPRegressor via mlforecast, 20 seeds, no intervals | Point forecasts differ; no interval |
+| Bootstrap intervals | `forecast(bootstrap = TRUE)` | conformal intervals, or statsmodels `simulate` | Different interval method |
+| Sample paths | `generate()` on any model | only statsmodels ETS/SARIMAX `simulate` | Aggregate intervals use statsmodels ETS |
+| CRPS | exact from the forecast distribution | approximated from interval quantiles (`fc_checks.crps_from_intervals`) | Approximation; more levels = closer |
+| STL defaults | feasts window defaults | statsmodels defaults (seasonal 7 unless set) | Components differ unless windows are set |
+| Damped ETS | phi search range per fable | statsforecast bounds phi to [0.8, 0.98] | phi hits 0.8 more often |
+| Deterministic trend example | book restricts the ARIMA error order | AutoARIMA chose ARIMA(2,0,1) errors on aus_airpassengers to 2016 | Different error model; the lesson (narrower intervals) holds |
 
 ## Unverified
 
@@ -140,6 +169,10 @@ What was done instead:
   data; Guerrero as the book's lambda method; BIC preference for VAR lag order.
 - Whether chapter 13 of the online edition has a nowcasting section.
 - The URL of the prison population CSV used in chapter 11.
-- `coreforecast.scalers.boxcox_lambda` argument for the Guerrero method.
-- Key names of the `model_` dict in fitted statsforecast models.
-- Whether `fable.prophet` is installable from conda-forge.
+- Every R and Python edition page slug used in the skills (aligned with `notes/`, not checked).
+- That the Python edition uses the same section numbering as the R edition.
+- The T/5 cap on the Ljung-Box lag as a book rule.
+- Whether the book uses dof > 0 for ETS residual tests (the templates use 0).
+- Holt-Winters as its own page (`holt-winters.html`) in chapter 8.
+- The "training and test sets" section (13.8) and its page name.
+- Values remembered from the book's examples listed under Parity.

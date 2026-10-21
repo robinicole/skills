@@ -1,0 +1,7 @@
+name: trigger_regression_explicit_2
+description: forecast-regression should trigger on a explicit prompt
+skill: forecast-regression
+kind: explicit
+user_message: Build a TSLM-style model of consumption using income, savings and unemployment as predictors, and select the predictors.
+expected:
+  should_trigger: true

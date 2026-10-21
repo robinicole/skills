@@ -129,7 +129,7 @@ cv[value_cols] = np.exp(cv[value_cols])
 scores = score_cv(cv, train_df=h02, m=12, levels=LEVELS)
 print("H02 pooled CV accuracy (original scale):\n",
       score_cv(cv, train_df=h02, m=12, levels=LEVELS, by_h=False).set_index("metric").round(3))
-print("RMSSE skill against seasonal naive, per horizon:\n",
+print("RMSSE skill against seasonal naive, per forecast horizon:\n",
       skill(scores, "rmsse", "SeasonalNaive")[["h", "ARIMA", "ETS"]].round(3))
 
 # %% 7 Forecast with prediction intervals and a plot

@@ -2,7 +2,7 @@
 
 ## Section URLs
 
-R edition [unverified]: `expsmooth.html`, `ses.html`, `holt.html`, `taxonomy.html`,
+R edition [unverified]: `expsmooth.html`, `ses.html`, `holt.html`, `holt-winters.html`, `taxonomy.html`,
 `ets.html`, `estimation-and-model-selection.html`, `ets-forecasting.html`,
 `expsmooth-exercises.html`.
 Python edition [unverified]: same topics, slugs not confirmed.

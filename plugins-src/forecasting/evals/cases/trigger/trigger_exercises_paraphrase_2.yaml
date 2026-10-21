@@ -1,0 +1,7 @@
+name: trigger_exercises_paraphrase_2
+description: forecast-exercises should trigger on a paraphrase prompt
+skill: forecast-exercises
+kind: paraphrase
+user_message: Create a practice problem about reconciling forecasts in a small hierarchy.
+expected:
+  should_trigger: true

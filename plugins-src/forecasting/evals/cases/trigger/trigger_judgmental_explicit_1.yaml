@@ -1,0 +1,7 @@
+name: trigger_judgmental_explicit_1
+description: forecast-judgmental should trigger on a explicit prompt
+skill: forecast-judgmental
+kind: explicit
+user_message: We are launching a new product with no historical data. How do we forecast first-year sales?
+expected:
+  should_trigger: true

@@ -1,0 +1,7 @@
+name: trigger_exercises_explicit_1
+description: forecast-exercises should trigger on a explicit prompt
+skill: forecast-exercises
+kind: explicit
+user_message: Give me a forecasting exercise to practise ARIMA order selection.
+expected:
+  should_trigger: true

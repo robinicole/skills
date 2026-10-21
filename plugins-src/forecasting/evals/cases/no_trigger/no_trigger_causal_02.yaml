@@ -1,0 +1,7 @@
+name: no_trigger_causal_02
+description: No forecasting skill should trigger (causal)
+skill: null
+kind: causal
+user_message: Run CausalImpact on our campaign to measure its effect on website signups.
+expected:
+  should_trigger: false

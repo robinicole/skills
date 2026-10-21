@@ -1,0 +1,7 @@
+name: trigger_ets_explicit_2
+description: forecast-ets should trigger on a explicit prompt
+skill: forecast-ets
+kind: explicit
+user_message: Should I use Holt-Winters with a damped trend for this quarterly tourism series?
+expected:
+  should_trigger: true

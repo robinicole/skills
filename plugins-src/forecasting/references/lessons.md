@@ -29,11 +29,11 @@ Format:
 
 ### All: Forecast horizon in cross-validation
 **Trigger**: Cross-validation with h shorter than the decision needs.
-**Mistake**: Accuracy at short horizons says little about long ones.
+**Mistake**: Accuracy at short forecast horizons says little about long ones.
 **Rule**: Score every forecast horizon the decision uses.
 **Source**: audit_checks.py demo, 2026-10-21.
 
-### Baselines: RMSE per horizon
+### Baselines: RMSE per forecast horizon
 **Trigger**: Scoring each forecast horizon separately.
 **Mistake**: Averaging per-origin RMSE values of one error each, which equals MAE.
 **Rule**: Average squared errors over series and forecast origins first, then take the square root. `fc_checks.score_cv` does this.

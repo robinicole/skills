@@ -1,0 +1,7 @@
+name: trigger_explore_explicit_1
+description: forecast-explore should trigger on a explicit prompt
+skill: forecast-explore
+kind: explicit
+user_message: Can you decompose this monthly series with STL and tell me if there is seasonality?
+expected:
+  should_trigger: true

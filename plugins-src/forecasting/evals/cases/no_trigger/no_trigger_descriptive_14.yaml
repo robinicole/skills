@@ -1,0 +1,7 @@
+name: no_trigger_descriptive_14
+description: No forecasting skill should trigger (descriptive)
+skill: null
+kind: descriptive
+user_message: Compute the median and standard deviation of delivery times in this CSV.
+expected:
+  should_trigger: false

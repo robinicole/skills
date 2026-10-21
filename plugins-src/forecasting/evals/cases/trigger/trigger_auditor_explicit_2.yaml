@@ -1,0 +1,7 @@
+name: trigger_auditor_explicit_2
+description: forecast-auditor should trigger on a explicit prompt
+skill: forecast-auditor
+kind: explicit
+user_message: Review this demand forecast and tell me what could go wrong before we order stock.
+expected:
+  should_trigger: true

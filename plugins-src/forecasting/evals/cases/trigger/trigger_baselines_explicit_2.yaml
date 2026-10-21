@@ -1,0 +1,7 @@
+name: trigger_baselines_explicit_2
+description: forecast-baselines should trigger on a explicit prompt
+skill: forecast-baselines
+kind: explicit
+user_message: Which accuracy metric should I use to compare forecasts across 500 products, MAPE or MASE?
+expected:
+  should_trigger: true

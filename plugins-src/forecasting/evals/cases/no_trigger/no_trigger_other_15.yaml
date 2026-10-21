@@ -1,0 +1,7 @@
+name: no_trigger_other_15
+description: No forecasting skill should trigger (other)
+skill: null
+kind: other
+user_message: Explain the difference between a mean and a median.
+expected:
+  should_trigger: false

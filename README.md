@@ -37,7 +37,7 @@ Each folder in `plugins-src/` is a plugin listed in `.claude-plugin/marketplace.
 | Plugin | Skills |
 |---|---|
 | `core` | `ponytail` (plus `-audit`, `-review`, `-debt`, `-gain`, `-help`), `no-ai-slop`, `karpathy-guidelines`, `writing-great-skills`, `asd-ste100`, `i-have-adhd`, see `plugins-src/core/README.md` |
-| `forecasting` | `forecast`, `backtest`, `reconcile`, see `plugins-src/forecasting/README.md` |
+| `forecasting` | `forecast-planner`, `-explore`, `-baselines`, `-regression`, `-ets`, `-arima`, `-dynamic-regression`, `-hierarchical`, `-advanced`, `-practical`, `-judgmental`, `-auditor`, `-report`, `-exercises`, see `plugins-src/forecasting/README.md` |
 
 New skill: `plugins-src/<plugin>/skills/<name>/SKILL.md`. New plugin: `plugins-src/<plugin>/.claude-plugin/plugin.json` plus an entry in `marketplace.json` and `<plugin>@robinicole-skills: true` in `~/.claude/settings.json`. Check with `claude plugin validate .`. The marketplace source is GitHub, so push, then `/plugin marketplace update robinicole-skills`.
 

@@ -1,0 +1,7 @@
+name: trigger_dynamic_regression_paraphrase_1
+description: forecast-dynamic-regression should trigger on a paraphrase prompt
+skill: forecast-dynamic-regression
+kind: paraphrase
+user_message: TV advertising seems to affect insurance quotes with a delay of a month or two. How do I build that into my forecast?
+expected:
+  should_trigger: true

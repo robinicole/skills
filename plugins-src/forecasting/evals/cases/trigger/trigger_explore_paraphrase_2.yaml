@@ -1,0 +1,7 @@
+name: trigger_explore_paraphrase_2
+description: forecast-explore should trigger on a paraphrase prompt
+skill: forecast-explore
+kind: paraphrase
+user_message: Does my quarterly revenue have a repeating pattern each year, and does it get bigger as revenue grows?
+expected:
+  should_trigger: true

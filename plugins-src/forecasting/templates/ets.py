@@ -95,7 +95,7 @@ cv = sf.cross_validation(df=gas, h=8, n_windows=10, step_size=2, level=LEVELS)
 scores = score_cv(cv, train_df=gas, m=4, levels=LEVELS)
 print("Gas, pooled CV accuracy:\n",
       score_cv(cv, train_df=gas, m=4, levels=LEVELS, by_h=False).set_index("metric").round(3))
-print("MASE skill against seasonal naive, per horizon:\n",
+print("MASE skill against seasonal naive, per forecast horizon:\n",
       skill(scores, "mase", "SeasonalNaive")[["h", "ETS_auto", "ETS_MAdM"]].round(3))
 
 sf_alg = StatsForecast(models=[AutoETS(model="ANN", alias="SES"), *alg_base], freq=freq("global_economy"))

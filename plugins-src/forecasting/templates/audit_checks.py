@@ -151,7 +151,7 @@ if __name__ == "__main__":
     from fpp_data import load, to_long
     gas = to_long(load("aus_production"), y="Gas", name="aus_production")
     # %% 2 Exploration needed for this method
-    # The audit needs: the cv frame, the training data, m, the decision horizon, levels.
+    # The audit needs: the cv frame, the training data, m, the forecast horizon the decision needs, levels.
     m, decision_h, levels = 4, 8, [80, 95]
     # %% 3 Baselines
     sf = StatsForecast(models=[AutoETS(season_length=m), SeasonalNaive(season_length=m)], freq="QS")

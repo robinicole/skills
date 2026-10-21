@@ -1,0 +1,7 @@
+name: trigger_hierarchical_explicit_2
+description: forecast-hierarchical should trigger on a explicit prompt
+skill: forecast-hierarchical
+kind: explicit
+user_message: Build a hierarchical forecast for country, state and city tourism numbers.
+expected:
+  should_trigger: true

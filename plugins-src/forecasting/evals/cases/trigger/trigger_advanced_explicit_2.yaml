@@ -1,0 +1,7 @@
+name: trigger_advanced_explicit_2
+description: forecast-advanced should trigger on a explicit prompt
+skill: forecast-advanced
+kind: explicit
+user_message: Forecast half-hourly electricity demand that has both daily and weekly cycles.
+expected:
+  should_trigger: true

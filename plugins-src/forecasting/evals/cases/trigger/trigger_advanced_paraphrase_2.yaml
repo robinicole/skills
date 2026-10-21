@@ -1,0 +1,7 @@
+name: trigger_advanced_paraphrase_2
+description: forecast-advanced should trigger on a paraphrase prompt
+skill: forecast-advanced
+kind: paraphrase
+user_message: Can a neural network forecast this yearly animal population series better than ARIMA?
+expected:
+  should_trigger: true

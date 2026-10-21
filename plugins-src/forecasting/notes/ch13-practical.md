@@ -4,7 +4,7 @@
 
 R edition [unverified]: `practical.html`, `weekly.html`, `counts.html`,
 `limited.html`, `combinations.html`, `aggregates.html`, `backcasting.html`,
-`long-short-ts.html`, `nowcasting.html`? [unverified whether this section exists
+`long-short-ts.html`, `training-test.html`, `nowcasting.html`? [unverified whether this section exists
 in the online edition], `missing-outliers.html`, `practical-exercises.html`.
 Python edition [unverified]: same topics, slugs not confirmed.
 

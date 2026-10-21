@@ -1,0 +1,7 @@
+name: trigger_exercises_paraphrase_1
+description: forecast-exercises should trigger on a paraphrase prompt
+skill: forecast-exercises
+kind: paraphrase
+user_message: I'm learning time series prediction. Can you make up a dataset where you know the true model so I can test myself?
+expected:
+  should_trigger: true

@@ -1,0 +1,7 @@
+name: trigger_hierarchical_paraphrase_2
+description: forecast-hierarchical should trigger on a paraphrase prompt
+skill: forecast-hierarchical
+kind: paraphrase
+user_message: Sales are split by region and by product type. I need forecasts at every combination that sum properly.
+expected:
+  should_trigger: true

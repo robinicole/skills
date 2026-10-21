@@ -1,0 +1,7 @@
+name: no_trigger_ml_10
+description: No forecasting skill should trigger (ml)
+skill: null
+kind: ml
+user_message: Train a classifier to detect fraudulent transactions from these features.
+expected:
+  should_trigger: false

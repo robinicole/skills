@@ -1,0 +1,7 @@
+name: trigger_advanced_paraphrase_1
+description: forecast-advanced should trigger on a paraphrase prompt
+skill: forecast-advanced
+kind: paraphrase
+user_message: My hourly call centre data repeats every day and every week. Normal seasonal models can't handle two cycles. What can?
+expected:
+  should_trigger: true

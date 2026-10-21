@@ -1,0 +1,7 @@
+name: trigger_hierarchical_paraphrase_1
+description: forecast-hierarchical should trigger on a paraphrase prompt
+skill: forecast-hierarchical
+kind: paraphrase
+user_message: We forecast each SKU and also the category totals, and the numbers disagree. How do I make them consistent?
+expected:
+  should_trigger: true
