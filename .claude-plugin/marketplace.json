@@ -13,7 +13,7 @@
     },
     {
       "name": "forecasting",
-      "description": "Skills for making, checking and scoring forecasts.",
+      "description": "Plan, build, check and report time series forecasts in Python, following Forecasting: Principles and Practice.",
       "source": "./plugins-src/forecasting"
     }
   ]

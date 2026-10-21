@@ -1,5 +1,22 @@
 {
   "name": "forecasting",
-  "description": "Skills for making, checking and scoring forecasts.",
-  "version": "0.2.0"
+  "description": "Plan, build, check and report time series forecasts in Python, following Hyndman and Athanasopoulos, Forecasting: Principles and Practice.",
+  "version": "0.3.0",
+  "author": {
+    "name": "Robin Nicole"
+  },
+  "repository": "https://github.com/robinicole/skills",
+  "license": "MIT",
+  "keywords": [
+    "forecasting",
+    "time-series",
+    "exponential-smoothing",
+    "arima",
+    "dynamic-regression",
+    "hierarchical-forecasting",
+    "reconciliation",
+    "cross-validation",
+    "prediction-intervals",
+    "statsforecast"
+  ]
 }
