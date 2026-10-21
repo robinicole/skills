@@ -1,0 +1,7 @@
+name: trigger_dynamic_regression_explicit_2
+description: forecast-dynamic-regression should trigger on a explicit prompt
+skill: forecast-dynamic-regression
+kind: explicit
+user_message: Use Fourier terms to model the yearly pattern in weekly gasoline sales and forecast next year.
+expected:
+  should_trigger: true

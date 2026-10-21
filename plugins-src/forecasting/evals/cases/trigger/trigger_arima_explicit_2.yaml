@@ -1,0 +1,7 @@
+name: trigger_arima_explicit_2
+description: forecast-arima should trigger on a explicit prompt
+skill: forecast-arima
+kind: explicit
+user_message: Run auto ARIMA on this series and check whether it is stationary with a unit root test.
+expected:
+  should_trigger: true

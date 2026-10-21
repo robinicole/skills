@@ -1,0 +1,7 @@
+name: trigger_hierarchical_explicit_1
+description: forecast-hierarchical should trigger on a explicit prompt
+skill: forecast-hierarchical
+kind: explicit
+user_message: My store forecasts don't add up to the region totals. How do I reconcile them with MinT?
+expected:
+  should_trigger: true

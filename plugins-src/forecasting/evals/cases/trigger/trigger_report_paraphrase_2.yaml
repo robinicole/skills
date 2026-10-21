@@ -1,0 +1,7 @@
+name: trigger_report_paraphrase_2
+description: forecast-report should trigger on a paraphrase prompt
+skill: forecast-report
+kind: paraphrase
+user_message: Document the methods and findings of my sales prediction project for the technical team.
+expected:
+  should_trigger: true

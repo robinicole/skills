@@ -1,0 +1,7 @@
+name: trigger_report_paraphrase_1
+description: forecast-report should trigger on a paraphrase prompt
+skill: forecast-report
+kind: paraphrase
+user_message: I finished the demand forecasting work. Turn the plan, the results and the caveats into something the board can read.
+expected:
+  should_trigger: true

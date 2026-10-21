@@ -1,0 +1,7 @@
+name: no_trigger_causal_06
+description: No forecasting skill should trigger (causal)
+skill: null
+kind: causal
+user_message: Use interrupted time series to measure the impact of the smoking ban on hospital admissions.
+expected:
+  should_trigger: false

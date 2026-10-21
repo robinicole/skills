@@ -1,0 +1,7 @@
+name: trigger_practical_explicit_2
+description: forecast-practical should trigger on a explicit prompt
+skill: forecast-practical
+kind: explicit
+user_message: I need a prediction interval for the annual total, not for each month separately.
+expected:
+  should_trigger: true

@@ -1,0 +1,7 @@
+name: trigger_advanced_explicit_1
+description: forecast-advanced should trigger on a explicit prompt
+skill: forecast-advanced
+kind: explicit
+user_message: Should I use Prophet or a VAR model for these series?
+expected:
+  should_trigger: true

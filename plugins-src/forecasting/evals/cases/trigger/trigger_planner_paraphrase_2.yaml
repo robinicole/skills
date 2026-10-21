@@ -1,0 +1,7 @@
+name: trigger_planner_paraphrase_2
+description: forecast-planner should trigger on a paraphrase prompt
+skill: forecast-planner
+kind: paraphrase
+user_message: We are setting up a process to predict hospital bed occupancy two weeks ahead. What should we decide first?
+expected:
+  should_trigger: true

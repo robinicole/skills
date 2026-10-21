@@ -1,0 +1,7 @@
+name: no_trigger_descriptive_13
+description: No forecasting skill should trigger (descriptive)
+skill: null
+kind: descriptive
+user_message: Make a bar chart of total sales per product category for 2023.
+expected:
+  should_trigger: false

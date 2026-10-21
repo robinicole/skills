@@ -1,0 +1,7 @@
+name: trigger_planner_paraphrase_1
+description: forecast-planner should trigger on a paraphrase prompt
+skill: forecast-planner
+kind: paraphrase
+user_message: My boss wants next year's sales numbers by product line. Where do I even start?
+expected:
+  should_trigger: true

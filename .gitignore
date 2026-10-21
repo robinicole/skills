@@ -38,3 +38,9 @@ settings.local.json
 # claude.ai synced skills, runtime state
 skills/synced/
 state/
+
+# forecasting plugin eval outputs and data cache
+plugins-src/forecasting/evals/runs/
+.fpp_cache/
+__pycache__/
+*.pyc

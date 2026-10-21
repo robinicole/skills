@@ -1,0 +1,7 @@
+name: no_trigger_causal_01
+description: No forecasting skill should trigger (causal)
+skill: null
+kind: causal
+user_message: Did our spring promotion increase sales? We have weekly sales before and after.
+expected:
+  should_trigger: false

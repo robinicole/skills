@@ -1,0 +1,7 @@
+name: trigger_baselines_paraphrase_2
+description: forecast-baselines should trigger on a paraphrase prompt
+skill: forecast-baselines
+kind: paraphrase
+user_message: What is the simplest prediction I should compare my fancy sales model against?
+expected:
+  should_trigger: true

@@ -1,0 +1,7 @@
+name: trigger_explore_paraphrase_1
+description: forecast-explore should trigger on a paraphrase prompt
+skill: forecast-explore
+kind: paraphrase
+user_message: Before modelling, I want to understand the patterns in these 300 store sales series and find which ones have strong yearly cycles.
+expected:
+  should_trigger: true

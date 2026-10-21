@@ -1,0 +1,7 @@
+name: trigger_exercises_explicit_2
+description: forecast-exercises should trigger on a explicit prompt
+skill: forecast-exercises
+kind: explicit
+user_message: Quiz me on exponential smoothing with a simulated series and grade my answer.
+expected:
+  should_trigger: true

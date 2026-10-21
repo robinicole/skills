@@ -1,0 +1,7 @@
+name: trigger_practical_paraphrase_1
+description: forecast-practical should trigger on a paraphrase prompt
+skill: forecast-practical
+kind: paraphrase
+user_message: Our forecast for a percentage keeps going above 100. How do I keep it between 0 and 100?
+expected:
+  should_trigger: true

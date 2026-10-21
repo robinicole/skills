@@ -1,0 +1,7 @@
+name: trigger_judgmental_paraphrase_2
+description: forecast-judgmental should trigger on a paraphrase prompt
+skill: forecast-judgmental
+kind: paraphrase
+user_message: There is a strike next month that the model knows nothing about. Should I change the numbers by hand?
+expected:
+  should_trigger: true

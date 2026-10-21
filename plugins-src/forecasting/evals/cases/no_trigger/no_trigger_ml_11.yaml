@@ -1,0 +1,7 @@
+name: no_trigger_ml_11
+description: No forecasting skill should trigger (ml)
+skill: null
+kind: ml
+user_message: Help me tune XGBoost hyperparameters for a house price prediction dataset.
+expected:
+  should_trigger: false

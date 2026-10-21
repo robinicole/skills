@@ -1,0 +1,7 @@
+name: trigger_report_explicit_2
+description: forecast-report should trigger on a explicit prompt
+skill: forecast-report
+kind: explicit
+user_message: Create a forecast report with the accuracy table and the forecast plot with intervals.
+expected:
+  should_trigger: true

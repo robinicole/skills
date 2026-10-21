@@ -1,0 +1,7 @@
+name: trigger_ets_paraphrase_1
+description: forecast-ets should trigger on a paraphrase prompt
+skill: forecast-ets
+kind: paraphrase
+user_message: I want a forecast that weights recent observations more than old ones and handles a growing seasonal pattern.
+expected:
+  should_trigger: true

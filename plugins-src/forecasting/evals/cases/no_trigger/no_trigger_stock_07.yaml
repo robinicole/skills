@@ -1,0 +1,7 @@
+name: no_trigger_stock_07
+description: No forecasting skill should trigger (stock)
+skill: null
+kind: stock
+user_message: Which stocks should I buy next week based on their price trends?
+expected:
+  should_trigger: false

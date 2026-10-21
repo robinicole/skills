@@ -1,0 +1,7 @@
+name: no_trigger_ml_09
+description: No forecasting skill should trigger (ml)
+skill: null
+kind: ml
+user_message: Build me a random forest to predict which customers will churn.
+expected:
+  should_trigger: false

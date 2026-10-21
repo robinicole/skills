@@ -1,0 +1,7 @@
+name: trigger_practical_explicit_1
+description: forecast-practical should trigger on a explicit prompt
+skill: forecast-practical
+kind: explicit
+user_message: Most months have zero sales for this spare part. Should I use Croston for this intermittent demand?
+expected:
+  should_trigger: true

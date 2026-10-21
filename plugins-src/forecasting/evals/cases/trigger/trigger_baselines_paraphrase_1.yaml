@@ -1,0 +1,7 @@
+name: trigger_baselines_paraphrase_1
+description: forecast-baselines should trigger on a paraphrase prompt
+skill: forecast-baselines
+kind: paraphrase
+user_message: How do I fairly test how well my demand predictions would have done in the past, at 1 to 12 months ahead?
+expected:
+  should_trigger: true

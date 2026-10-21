@@ -1,0 +1,7 @@
+name: trigger_arima_paraphrase_2
+description: forecast-arima should trigger on a paraphrase prompt
+skill: forecast-arima
+kind: paraphrase
+user_message: How do I know if my series needs differencing before fitting a Box-Jenkins model?
+expected:
+  should_trigger: true

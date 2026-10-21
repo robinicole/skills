@@ -1,0 +1,7 @@
+name: trigger_regression_explicit_1
+description: forecast-regression should trigger on a explicit prompt
+skill: forecast-regression
+kind: explicit
+user_message: Fit a regression forecast with a linear trend and season dummies to quarterly beer production.
+expected:
+  should_trigger: true

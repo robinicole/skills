@@ -1,0 +1,7 @@
+name: trigger_regression_paraphrase_1
+description: forecast-regression should trigger on a paraphrase prompt
+skill: forecast-regression
+kind: paraphrase
+user_message: I want to predict next quarter's sales from advertising spend and the number of working days with a plain linear model. How do I pick which inputs to keep?
+expected:
+  should_trigger: true

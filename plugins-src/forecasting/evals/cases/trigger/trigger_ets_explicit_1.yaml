@@ -1,0 +1,7 @@
+name: trigger_ets_explicit_1
+description: forecast-ets should trigger on a explicit prompt
+skill: forecast-ets
+kind: explicit
+user_message: Fit an exponential smoothing model (ETS) to my monthly sales and explain the parameters.
+expected:
+  should_trigger: true
