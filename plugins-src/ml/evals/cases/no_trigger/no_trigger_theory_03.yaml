@@ -1,0 +1,7 @@
+name: no_trigger_theory_03
+description: No ml skill should trigger (theory)
+skill: null
+kind: theory
+user_message: Explain how backpropagation computes gradients in a neural network.
+expected:
+  should_trigger: false

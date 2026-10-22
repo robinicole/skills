@@ -1,0 +1,7 @@
+name: trigger_features_explicit_2
+description: ml-features should trigger on a explicit prompt
+skill: ml-features
+kind: explicit
+user_message: We have about 400 feature columns in the click model and nobody knows what half of them do. Help me delete unused features without hurting quality.
+expected:
+  should_trigger: true

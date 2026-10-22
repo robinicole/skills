@@ -38,6 +38,7 @@ Each folder in `plugins-src/` is a plugin listed in `.claude-plugin/marketplace.
 |---|---|
 | `core` | `ponytail` (plus `-audit`, `-review`, `-debt`, `-gain`, `-help`), `no-ai-slop`, `karpathy-guidelines`, `writing-great-skills`, `asd-ste100`, `i-have-adhd`, see `plugins-src/core/README.md` |
 | `forecasting` | `forecast-planner`, `-explore`, `-baselines`, `-regression`, `-ets`, `-arima`, `-dynamic-regression`, `-hierarchical`, `-advanced`, `-practical`, `-judgmental`, `-auditor`, `-report`, `-exercises`, see `plugins-src/forecasting/README.md` |
+| `ml` | `ml-planner`, `-first-pipeline`, `-monitoring`, `-features`, `-error-analysis`, `-skew`, `-plateau`, `-auditor`, see `plugins-src/ml/README.md` |
 
 New skill: `plugins-src/<plugin>/skills/<name>/SKILL.md`. New plugin: `plugins-src/<plugin>/.claude-plugin/plugin.json` plus an entry in `marketplace.json` and `<plugin>@robinicole-skills: true` in `~/.claude/settings.json`. Check with `claude plugin validate .`. The marketplace source is GitHub, so push, then `/plugin marketplace update robinicole-skills`.
 
@@ -65,6 +66,7 @@ claude plugin install orient@learning-opportunities
 claude plugin install learning-goal@learning-goal
 claude plugin install core@robinicole-skills
 claude plugin install forecasting@robinicole-skills
+claude plugin install ml@robinicole-skills
 claude plugin install mattpocock-skills@claude-plugins-official
 ```
 
@@ -74,6 +76,7 @@ Inside a session, the same thing is `/plugin marketplace add <source>` and `/plu
 |---|---|---|
 | `core` | github `robinicole/skills` | `/core:<name>` |
 | `forecasting` | github `robinicole/skills` | `/forecasting:<name>` |
+| `ml` | github `robinicole/skills` | `/ml:<name>` |
 | `humanizer` | github `blader/humanizer` | `/humanizer` |
 | `learning-opportunities` | git `DrCatHicks/learning-opportunities.git` | `/learning-opportunities`, `/orient` |
 | `learning-goal` | git `DrCatHicks/learning-goal.git` | `/learning-goal` |

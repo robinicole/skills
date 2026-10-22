@@ -1,0 +1,7 @@
+name: trigger_error_analysis_explicit_1
+description: ml-error-analysis should trigger on a explicit prompt
+skill: ml-error-analysis
+kind: explicit
+user_message: Can you help me compute the model delta between our current ranker and the new candidate before we show it to users?
+expected:
+  should_trigger: true

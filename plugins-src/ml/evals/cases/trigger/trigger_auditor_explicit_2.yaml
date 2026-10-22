@@ -1,0 +1,7 @@
+name: trigger_auditor_explicit_2
+description: ml-auditor should trigger on a explicit prompt
+skill: ml-auditor
+kind: explicit
+user_message: Please review my ML design doc for a comment spam classifier before we start building it.
+expected:
+  should_trigger: true

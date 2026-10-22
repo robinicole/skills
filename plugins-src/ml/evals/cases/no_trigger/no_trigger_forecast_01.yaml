@@ -1,0 +1,7 @@
+name: no_trigger_forecast_01
+description: No ml skill should trigger (forecast)
+skill: null
+kind: forecast
+user_message: Forecast our monthly sales for the next 12 months with ETS.
+expected:
+  should_trigger: false

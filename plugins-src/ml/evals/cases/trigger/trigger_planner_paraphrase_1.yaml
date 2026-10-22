@@ -1,0 +1,7 @@
+name: trigger_planner_paraphrase_1
+description: ml-planner should trigger on a paraphrase prompt
+skill: ml-planner
+kind: paraphrase
+user_message: We have no labelled history yet but leadership wants smart ranking for our job board. Is it worth training something now, or should we hand-code a ranking and wait?
+expected:
+  should_trigger: true

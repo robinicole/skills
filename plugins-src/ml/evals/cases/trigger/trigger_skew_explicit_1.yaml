@@ -1,0 +1,7 @@
+name: trigger_skew_explicit_1
+description: ml-skew should trigger on a explicit prompt
+skill: ml-skew
+kind: explicit
+user_message: I think we have training-serving skew in our click model. Can you help me find where it comes from?
+expected:
+  should_trigger: true

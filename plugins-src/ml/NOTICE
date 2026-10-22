@@ -1,0 +1,11 @@
+Content: the skills distil Martin Zinkevich, "Rules of Machine Learning: Best
+Practices for ML Engineering" (https://developers.google.com/machine-learning/guides/rules-of-ml,
+page last updated 2025-08-25). The page is licensed under the Creative Commons
+Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/). The rules
+are paraphrased and shortened here, not copied; references/rules.md links each
+section of the original. Changes: rewritten in own words, grouped into skills,
+Google product examples dropped or reduced.
+
+Structure (planner, method skills, auditor, eval cases, severity verdicts) follows
+this repo's forecasting plugin, which adapts it from everyday-causal-skills by
+Robson Tigre (MIT); see ../forecasting/NOTICE.

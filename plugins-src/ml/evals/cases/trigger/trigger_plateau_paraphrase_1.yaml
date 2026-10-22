@@ -1,0 +1,7 @@
+name: trigger_plateau_paraphrase_1
+description: ml-plateau should trigger on a paraphrase prompt
+skill: ml-plateau
+kind: paraphrase
+user_message: Every new model we ship barely moves the needle anymore, and when one number goes up another goes down. How do we decide what to work on?
+expected:
+  should_trigger: true

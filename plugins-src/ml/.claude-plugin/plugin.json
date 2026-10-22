@@ -1,0 +1,19 @@
+{
+  "name": "ml",
+  "description": "Plan, build, monitor and review production machine learning systems, following Martin Zinkevich's Rules of Machine Learning.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Robin Nicole"
+  },
+  "repository": "https://github.com/robinicole/skills",
+  "license": "MIT",
+  "keywords": [
+    "machine-learning",
+    "ml-engineering",
+    "rules-of-ml",
+    "training-serving-skew",
+    "feature-engineering",
+    "monitoring",
+    "launch-decisions"
+  ]
+}

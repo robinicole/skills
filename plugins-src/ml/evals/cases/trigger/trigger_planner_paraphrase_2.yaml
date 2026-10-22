@@ -1,0 +1,7 @@
+name: trigger_planner_paraphrase_2
+description: ml-planner should trigger on a paraphrase prompt
+skill: ml-planner
+kind: paraphrase
+user_message: For our first spam classifier, which single number should the learner be trained to push up? Someone suggested daily active users.
+expected:
+  should_trigger: true

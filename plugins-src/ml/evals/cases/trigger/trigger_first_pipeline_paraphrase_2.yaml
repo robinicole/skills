@@ -1,0 +1,7 @@
+name: trigger_first_pipeline_paraphrase_2
+description: ml-first-pipeline should trigger on a paraphrase prompt
+skill: ml-first-pipeline
+kind: paraphrase
+user_message: We have one classifier that both hides abusive posts and orders the rest by usefulness. Should these be split, and where should the hard cut-offs live?
+expected:
+  should_trigger: true

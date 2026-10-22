@@ -1,0 +1,7 @@
+name: trigger_plateau_explicit_1
+description: ml-plateau should trigger on a explicit prompt
+skill: ml-plateau
+kind: explicit
+user_message: Our recommendation model's gains have plateaued at around 0.3% per launch for three quarters. What should we try next?
+expected:
+  should_trigger: true

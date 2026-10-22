@@ -1,0 +1,7 @@
+name: trigger_monitoring_paraphrase_1
+description: ml-monitoring should trigger on a paraphrase prompt
+skill: ml-monitoring
+kind: paraphrase
+user_message: One of the lookup tables our ranker joins in hasn't refreshed since spring and quality slowly sank. How do we catch that kind of thing next time?
+expected:
+  should_trigger: true

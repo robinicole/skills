@@ -1,0 +1,7 @@
+name: trigger_first_pipeline_paraphrase_1
+description: ml-first-pipeline should trigger on a paraphrase prompt
+skill: ml-first-pipeline
+kind: paraphrase
+user_message: Our logistic regression predicts click probability, but for users on mobile the average score is well above the actual click rate. Is something broken in how examples are built?
+expected:
+  should_trigger: true

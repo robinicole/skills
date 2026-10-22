@@ -1,0 +1,7 @@
+name: trigger_features_paraphrase_1
+description: ml-features should trigger on a paraphrase prompt
+skill: ml-features
+kind: paraphrase
+user_message: The spam classifier is in production and improving. A colleague wants to feed it user clusters from another team's system. Is that a good next input, or should we start with something else?
+expected:
+  should_trigger: true

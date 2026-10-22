@@ -1,0 +1,7 @@
+name: trigger_first_pipeline_explicit_2
+description: ml-first-pipeline should trigger on a explicit prompt
+skill: ml-first-pipeline
+kind: explicit
+user_message: I copied the pipeline from our search team for a new feed ranker. What could it be silently dropping?
+expected:
+  should_trigger: true

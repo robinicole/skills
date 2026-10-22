@@ -1,0 +1,7 @@
+name: trigger_features_explicit_1
+description: ml-features should trigger on a explicit prompt
+skill: ml-features
+kind: explicit
+user_message: Our ranking model is live and metrics still go up each launch. Should I add a feature cross between query language and document country, or is that too much for 2 million examples?
+expected:
+  should_trigger: true

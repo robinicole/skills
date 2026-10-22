@@ -1,0 +1,7 @@
+name: trigger_error_analysis_paraphrase_1
+description: ml-error-analysis should trigger on a paraphrase prompt
+skill: ml-error-analysis
+kind: paraphrase
+user_message: The new recommender misranks some items badly. How do I go through the bad cases, group them and decide what new inputs might fix them?
+expected:
+  should_trigger: true

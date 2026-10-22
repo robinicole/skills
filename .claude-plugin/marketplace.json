@@ -15,6 +15,11 @@
       "name": "forecasting",
       "description": "Plan, build, check and report time series forecasts in Python, following Forecasting: Principles and Practice.",
       "source": "./plugins-src/forecasting"
+    },
+    {
+      "name": "ml",
+      "description": "Plan, build, monitor and review production ML systems, following Zinkevich's Rules of Machine Learning.",
+      "source": "./plugins-src/ml"
     }
   ]
 }

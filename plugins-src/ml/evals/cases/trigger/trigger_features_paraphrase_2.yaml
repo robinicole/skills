@@ -1,0 +1,7 @@
+name: trigger_features_paraphrase_2
+description: ml-features should trigger on a paraphrase prompt
+skill: ml-features
+kind: paraphrase
+user_message: I train on roughly 1,000 labelled support tickets. How many inputs can the model reasonably learn from, and should I split ticket length into ranges?
+expected:
+  should_trigger: true

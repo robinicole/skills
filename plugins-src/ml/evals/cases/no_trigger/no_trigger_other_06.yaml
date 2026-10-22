@@ -1,0 +1,7 @@
+name: no_trigger_other_06
+description: No ml skill should trigger (other)
+skill: null
+kind: other
+user_message: Write a SQL query that counts daily active users by country.
+expected:
+  should_trigger: false

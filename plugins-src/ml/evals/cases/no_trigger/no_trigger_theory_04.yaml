@@ -1,0 +1,7 @@
+name: no_trigger_theory_04
+description: No ml skill should trigger (theory)
+skill: null
+kind: theory
+user_message: What is the difference between L1 and L2 regularization, mathematically?
+expected:
+  should_trigger: false

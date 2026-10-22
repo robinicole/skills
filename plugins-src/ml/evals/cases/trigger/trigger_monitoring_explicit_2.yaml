@@ -1,0 +1,7 @@
+name: trigger_monitoring_explicit_2
+description: ml-monitoring should trigger on a explicit prompt
+skill: ml-monitoring
+kind: explicit
+user_message: Last week a broken model went live and nobody noticed for a day. How do I block a bad model export automatically?
+expected:
+  should_trigger: true

@@ -1,0 +1,7 @@
+name: trigger_monitoring_paraphrase_2
+description: ml-monitoring should trigger on a paraphrase prompt
+skill: ml-monitoring
+kind: paraphrase
+user_message: Half our feature columns have no documentation and nobody knows who maintains them, and our pager fires on things nobody can fix. What should we set up?
+expected:
+  should_trigger: true

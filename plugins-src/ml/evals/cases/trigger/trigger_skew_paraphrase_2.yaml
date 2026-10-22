@@ -1,0 +1,7 @@
+name: trigger_skew_paraphrase_2
+description: ml-skew should trigger on a paraphrase prompt
+skill: ml-skew
+kind: paraphrase
+user_message: The features we train on are recomputed nightly from the user table, but at request time the service reads them live. Could that mismatch hurt the model, and how do we fix it?
+expected:
+  should_trigger: true

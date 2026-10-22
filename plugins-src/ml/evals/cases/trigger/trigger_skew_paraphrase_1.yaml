@@ -1,0 +1,7 @@
+name: trigger_skew_paraphrase_1
+description: ml-skew should trigger on a paraphrase prompt
+skill: ml-skew
+kind: paraphrase
+user_message: Our spam classifier gets 0.91 AUC on the evaluation set but the same examples score noticeably worse once the model is serving real requests. What could cause the difference?
+expected:
+  should_trigger: true

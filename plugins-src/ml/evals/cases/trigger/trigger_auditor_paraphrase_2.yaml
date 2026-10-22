@@ -1,0 +1,7 @@
+name: trigger_auditor_paraphrase_2
+description: ml-auditor should trigger on a paraphrase prompt
+skill: ml-auditor
+kind: paraphrase
+user_message: Before the launch meeting, I want someone to poke holes in how our ad click model was built, evaluated and is served, and say who should fix each issue.
+expected:
+  should_trigger: true

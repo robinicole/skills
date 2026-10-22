@@ -1,0 +1,7 @@
+name: trigger_first_pipeline_explicit_1
+description: ml-first-pipeline should trigger on a explicit prompt
+skill: ml-first-pipeline
+kind: explicit
+user_message: We are building our first ML pipeline for ranking app recommendations. What should the first version look like?
+expected:
+  should_trigger: true

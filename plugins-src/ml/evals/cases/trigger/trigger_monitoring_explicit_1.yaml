@@ -1,0 +1,7 @@
+name: trigger_monitoring_explicit_1
+description: ml-monitoring should trigger on a explicit prompt
+skill: ml-monitoring
+kind: explicit
+user_message: Our click model gets retrained whenever someone remembers. How do I measure model freshness to pick a schedule?
+expected:
+  should_trigger: true

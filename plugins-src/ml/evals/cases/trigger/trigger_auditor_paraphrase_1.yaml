@@ -1,0 +1,7 @@
+name: trigger_auditor_paraphrase_1
+description: ml-auditor should trigger on a paraphrase prompt
+skill: ml-auditor
+kind: paraphrase
+user_message: Our recommendation model has been in production for two years. Go through it and tell me what is most likely broken, ranked by how bad it is, but do not change anything.
+expected:
+  should_trigger: true

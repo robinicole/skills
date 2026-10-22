@@ -1,0 +1,7 @@
+name: no_trigger_forecast_02
+description: No ml skill should trigger (forecast)
+skill: null
+kind: forecast
+user_message: Which is better for my quarterly series, ARIMA or exponential smoothing?
+expected:
+  should_trigger: false

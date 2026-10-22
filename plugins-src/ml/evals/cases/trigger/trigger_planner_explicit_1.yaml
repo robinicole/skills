@@ -1,0 +1,7 @@
+name: trigger_planner_explicit_1
+description: ml-planner should trigger on a explicit prompt
+skill: ml-planner
+kind: explicit
+user_message: We want to route support tickets to the right team automatically. Do I need machine learning for this, or is that overkill?
+expected:
+  should_trigger: true

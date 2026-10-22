@@ -1,0 +1,7 @@
+name: trigger_error_analysis_paraphrase_2
+description: ml-error-analysis should trigger on a paraphrase prompt
+skill: ml-error-analysis
+kind: paraphrase
+user_message: Users keep complaining that our search shows clickbait results. How do I put a number on that before we try to fix it?
+expected:
+  should_trigger: true

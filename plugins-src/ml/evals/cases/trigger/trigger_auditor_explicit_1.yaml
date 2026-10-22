@@ -1,0 +1,7 @@
+name: trigger_auditor_explicit_1
+description: ml-auditor should trigger on a explicit prompt
+skill: ml-auditor
+kind: explicit
+user_message: Can you audit my ML system? It ranks job listings on our site and has been live for a year.
+expected:
+  should_trigger: true

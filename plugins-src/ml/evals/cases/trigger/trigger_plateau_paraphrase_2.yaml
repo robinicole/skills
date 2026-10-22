@@ -1,0 +1,7 @@
+name: trigger_plateau_paraphrase_2
+description: ml-plateau should trigger on a paraphrase prompt
+skill: ml-plateau
+kind: paraphrase
+user_message: We combine the scores of three base models with a small neural net on top that also sees the raw inputs. Is that a sensible way to combine them?
+expected:
+  should_trigger: true

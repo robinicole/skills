@@ -1,0 +1,7 @@
+name: no_trigger_other_07
+description: No ml skill should trigger (other)
+skill: null
+kind: other
+user_message: Fix this pandas KeyError when I merge two dataframes.
+expected:
+  should_trigger: false
