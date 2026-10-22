@@ -28,8 +28,7 @@ what limits it (objective, launch decision or information) and record the next m
    moves on an earlier system add complexity that slows every later launch.
 2. Ask for the objective and the product goal it stands for. If the two diverge,
    more features will not help (rule 38).
-3. Ask how launches are decided: which metrics, who decides, and what the last
-   rejected launch looked like (rule 39).
+3. Ask how launches are decided: metrics, decider, last rejected launch (rule 39).
 4. Ask what the model is built on: features, other models' scores, or both (rule 40).
 
 ## Stage 2: Diagnostics

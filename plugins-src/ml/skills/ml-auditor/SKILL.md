@@ -17,8 +17,7 @@ decision or fail in production. Do not fix it; say what to fix and which skill d
 2. Read all of `../../references/rules.md`. Every finding cites a rule from it.
 3. Read `../../references/workflow.md` for the phases, verdict format and gate.
 4. Read every file in `docs/ml-plans/*/` if present, and the code in `analysis/`.
-
-Do not trust earlier "pass" claims in those files; find the output.
+   Do not trust earlier "pass" claims in those files; find the output.
 
 ## Stage 1: Setup
 
