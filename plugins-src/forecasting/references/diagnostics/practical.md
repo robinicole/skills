@@ -1,7 +1,7 @@
 # Diagnostics: practical issues
 
 Checks for `forecast-practical`. Severity as in `baselines.md`.
-Book: FPP3 chapter 13 [unverified sections].
+Book: FPP3 chapter 13 (sections checked 2026-10-22).
 
 ## Intermittent demand scored correctly
 

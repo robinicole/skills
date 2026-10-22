@@ -2,11 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `advanced-methods.html`, `complexseasonality.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `advanced.html`, `complexseasonality.html`,
 `prophet.html`, `VAR.html`, `nnetar.html`, `bootstrap.html`,
 `advanced-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed; the neural
-section may use `neuralforecast` or `mlforecast`.
+Python edition (checked 2026-10-22): one page per chapter, `12-advanced.html`, same section anchors. NNAR is not here: neural networks are chapter 14 (`14-neural-networks.html`, neuralforecast), so 12.4 is bagging.
 
 ## Key concepts and decision rules
 
@@ -32,8 +31,9 @@ section may use `neuralforecast` or `mlforecast`.
   regression is simpler. Used for impulse response analysis and forecasting.
 - Neural network autoregression NNAR(p, P, k): lagged values (p non-seasonal
   lags, P seasonal lags) feed a single hidden layer with k neurons; the model is
-  fitted many times from random starts and averaged. Default p from the best
-  linear AR model by AICc, P = 1, k = (p + P + 1)/2 rounded up. Forecasts are
+  fitted several times from random starts and averaged. Default p from the best
+  linear AR model by AIC (seasonal series: P = 1, and p from an AR fitted to the
+  seasonally adjusted data), k = (p + P + 1)/2 rounded to the nearest integer. Forecasts are
   produced by iterating one step at a time. Prediction intervals only by
   simulating future paths with bootstrapped or normal residuals. It can capture
   nonlinear dynamics but has no interpretable structure.
@@ -54,15 +54,15 @@ Held-out comparison against ETS and ARIMA so the extra machinery proves its wort
 
 ## R functions and Python equivalents
 
-| R (fable, fable.prophet) | Python [unverified] |
+| R (fable, fable.prophet) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `STL(y ~ season(period=7) + season(period=365))` then `decomposition_model` | `statsforecast.models.MSTL(season_length=[7, 365], trend_forecaster=AutoARIMA())` |
-| `ARIMA(y ~ fourier(period=, K=) + fourier(period=, K=) + PDQ(0,0,0))` | two `Fourier` term sets as exogenous columns |
-| `prophet(y ~ season(period=, order=))` | `prophet.Prophet` (separate package) |
-| `VAR(vars(y1, y2))`, `VAR(..., ic="bic")` | `statsmodels.tsa.api.VAR`, `select_order(ic="bic")` |
-| `NNETAR(y)` | `neuralforecast.models.MLP` with `input_size=p` or `mlforecast` with lag features; no exact NNAR equivalent [unverified which the Python edition uses] |
-| `generate(..., bootstrap_block_size=)` | manual block bootstrap of STL remainder |
-| `AutoTBATS` (not in the book, statsforecast) | alternative for several periods |
+| `STL(y ~ season(period=7) + season(period=365))` then `decomposition_model` | `statsforecast.models.MSTL(season_length=[m1, m2])` with the default trend forecaster; also: `trend_forecaster=AutoARIMA()` |
+| `ARIMA(y ~ fourier(period=, K=) + fourier(period=, K=) + PDQ(0,0,0))` | one `utilsforecast.feature_engineering.fourier(season_length=, k=)` per period via `pipeline`, then `AutoARIMA(seasonal=False)` with `X_df=`; also: statsmodels `Fourier` sets |
+| `prophet(y ~ season(period=, order=))` | `prophet.Prophet` (separate package) with `add_seasonality(name=, period=, fourier_order=)`; also: `statsforecast.adapters.prophet.AutoARIMAProphet` |
+| `VAR(vars(y1, y2))`, `VAR(..., ic="bic")` | `statsmodels.tsa.api.VAR(df).fit(ic="aic"/"bic")`; also: `select_order()` |
+| `NNETAR(y)` | not in Python edition chapter 12; chapter 14 uses `neuralforecast.models.MLP(h=, input_size=)` in `NeuralForecast`; no exact NNAR equivalent; also: `mlforecast` with lag features |
+| `generate(..., bootstrap_block_size=)` | `MSTL` components from `sf.fitted_[0, 0].model_`, block bootstrap of the remainder in a hand-written function, `AutoETS` on each series, forecasts averaged |
+| `AutoTBATS` (not in the book, statsforecast) | alternative for several periods (not in the Python edition) |
 
 ## Common mistakes the book warns about
 

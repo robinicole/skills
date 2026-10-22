@@ -1,6 +1,6 @@
 ---
 name: forecast-arima
-description: Fits ARIMA and seasonal ARIMA models, deciding stationarity and differencing with KPSS and seasonal strength tests, reading ACF and PACF, running the automatic order search, checking residuals, and comparing ARIMA with ETS by cross-validation. Use when the user says "ARIMA model", "seasonal ARIMA", "SARIMA", "auto ARIMA", "stationarity", "unit root test", "differencing" or "PACF". Also use it for questions about differencing and reading ACF or PACF plots. Not for regression with ARIMA errors (use forecast-dynamic-regression).
+description: Fits ARIMA and seasonal ARIMA models, deciding stationarity and differencing with KPSS and seasonal strength tests, reading ACF and PACF, running the automatic order search, checking residuals, and comparing ARIMA with ETS by cross-validation. Use when the user says "ARIMA model", "seasonal ARIMA", "SARIMA", "auto ARIMA", "stationarity", "unit root test", "differencing" or "PACF". Also use it for questions about differencing and reading ACF or PACF plots. Not for regression with ARIMA errors (use forecast-regression).
 metadata:
   author: Robin Nicole
   compatibility: Python 3.10 or later. Packages listed in references/preflight.md.
@@ -69,7 +69,7 @@ the chosen model (reverts to a mean, follows a drift, or stays flat) and that th
 intervals keep widening when d is 1 or more.
 
 Next: `/forecasting:forecast-auditor`. If drivers matter:
-`/forecasting:forecast-dynamic-regression`.
+`/forecasting:forecast-regression`.
 
 ## Common mistakes
 
@@ -92,4 +92,4 @@ estimation and order selection, 9.7 ARIMA modelling in practice, 9.8 forecasting
 `stationarity.html`, `AR.html`, `MA.html`, `non-seasonal-arima.html`,
 `arima-estimation.html`, `arima-r.html`, `arima-forecasting.html`,
 `seasonal-arima.html`, `arima-ets.html`. Python edition:
-`https://otexts.com/fpppy/` chapter 9. URLs unverified (see `NOTES.md`).
+`https://otexts.com/fpppy/` chapter 9. URLs checked 2026-10-22.

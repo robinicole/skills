@@ -1,6 +1,6 @@
 name: trigger_dynamic_regression_paraphrase_2
-description: forecast-dynamic-regression should trigger on a paraphrase prompt
-skill: forecast-dynamic-regression
+description: forecast-regression should trigger on a paraphrase prompt
+skill: forecast-regression
 kind: paraphrase
 user_message: My regression residuals are strongly autocorrelated. How do I keep the drivers but fix the errors for forecasting?
 expected:

@@ -102,7 +102,7 @@ print("Ex-ante intervals ignore the error in the Income forecast, so their cover
 air = load("aus_airpassengers")
 ya = air["Passengers"].to_numpy()
 t = np.arange(1, len(ya) + 1, dtype=float).reshape(-1, 1)
-det = AutoARIMA(d=0).fit(ya, X=t)
+det = AutoARIMA(d=0, max_p=1).fit(ya, X=t)  # max_p=1 as in the Python edition: avoids a non-invertible ARIMA(2,0,1)
 sto = AutoARIMA(d=1).fit(ya)
 H = 20
 t_f = np.arange(len(ya) + 1, len(ya) + H + 1, dtype=float).reshape(-1, 1)

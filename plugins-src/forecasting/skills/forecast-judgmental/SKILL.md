@@ -86,7 +86,7 @@ exists, hand over to `/forecasting:forecast-planner` for a statistical forecast.
 FPP3 chapter 6: 6.1 beware of limitations, 6.2 key principles, 6.3 the Delphi
 method, 6.4 forecasting by analogy, 6.5 scenario forecasting, 6.6 new product
 forecasting, 6.7 judgmental adjustments. R: `https://otexts.com/fpp3/judgmental.html`,
-`judgmental-beware.html`, `key-principles.html`, `delphimethod.html`,
-`analogies.html`, `scenarios.html`, `new-product-forecasting.html`,
+`judgmental.html#sec-judgmental-limitations`, `judgmental.html#sec-judgmental-principles`, `delphimethod.html`,
+`analogies.html`, `scenarios.html`, `judgmental.html#sec-new-products`,
 `judgmental-adjustments.html`. Python edition: `https://otexts.com/fpppy/`
-chapter 6. URLs unverified (see `NOTES.md`).
+chapter 6. URLs checked 2026-10-22.

@@ -2,11 +2,11 @@
 
 ## Section URLs
 
-R edition [unverified]: `decomposition.html`, `transformations.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `decomposition.html`, `transformations.html`,
 `components.html`, `moving-averages.html`, `classical-decomposition.html`,
 `methods-used-by-official-statistics-agencies.html`, `stl.html`,
 `decomposition-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `03-decomposition.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -54,13 +54,13 @@ None in this chapter.
 
 ## R functions and Python equivalents
 
-| R | Python [unverified] |
+| R | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `box_cox()`, `features(y, guerrero)` | `scipy.stats.boxcox` (maximum-likelihood lambda, not Guerrero); `coreforecast` may have a Guerrero implementation [unverified] |
+| `box_cox()`, `features(y, guerrero)` | `coreforecast.scalers.boxcox_lambda(y, method="guerrero", season_length=m)` then `boxcox(y, lam)`; `method="loglik"` for non-seasonal data; also: `scipy.stats.boxcox` (maximum-likelihood lambda, not Guerrero) |
 | `model(STL(y ~ trend(window=) + season(window=)))` | `statsmodels.tsa.seasonal.STL(endog, period, seasonal, trend, robust)`; `statsforecast.models.MSTL` for forecasting |
 | `model(classical_decomposition(y, type=))` | `statsmodels.tsa.seasonal.seasonal_decompose(model="additive"/"multiplicative")` |
-| `X_13ARIMA_SEATS()` | `statsmodels.tsa.x13` needs the external X-13 binary; no pure-Python equivalent |
-| `components()`, `autoplot(components)` | result attributes `.trend`, `.seasonal`, `.resid`; `.plot()` |
+| `X_13ARIMA_SEATS()` | `statsmodels.tsa.x13` needs the external X-13 binary; no pure-Python equivalent (not in the Python edition: X-11 and SEATS are described, not run) |
+| `components()`, `autoplot(components)` | result attributes `.trend`, `.seasonal`, `.resid` put in a DataFrame and drawn with `plot_series`; also: `.plot()` |
 
 ## Common mistakes the book warns about
 

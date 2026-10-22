@@ -1,7 +1,7 @@
 # Diagnostics: exploration, transformation, decomposition, features
 
 Checks for `forecast-explore`. Severity as in `baselines.md`.
-Book: FPP3 chapters 2, 3, 4 [unverified sections].
+Book: FPP3 chapters 2, 3, 4 (sections checked 2026-10-22).
 
 ## Regular time index, gaps explicit
 

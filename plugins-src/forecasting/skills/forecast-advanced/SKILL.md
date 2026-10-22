@@ -89,6 +89,6 @@ Next: `/forecasting:forecast-auditor`.
 
 FPP3 chapter 12: 12.1 complex seasonality, 12.2 Prophet, 12.3 vector
 autoregressions, 12.4 neural network models, 12.5 bootstrapping and bagging. R:
-`https://otexts.com/fpp3/advanced-methods.html`, `complexseasonality.html`,
+`https://otexts.com/fpp3/advanced.html`, `complexseasonality.html`,
 `prophet.html`, `VAR.html`, `nnetar.html`, `bootstrap.html`. Python edition:
-`https://otexts.com/fpppy/` chapter 12. URLs unverified (see `NOTES.md`).
+`https://otexts.com/fpppy/` chapter 12; neural networks are in its chapter 14. URLs checked 2026-10-22.

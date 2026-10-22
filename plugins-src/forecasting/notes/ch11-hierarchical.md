@@ -2,10 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `hierarchical.html`, `hts.html`, `gts.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `hierarchical.html`, `hts.html`, `hierarchical-forecasting.html#sec-hts`,
 `single-level.html`, `reconciliation.html`, `tourism.html`, `prison.html`,
 `rec-prob.html`, `hierarchical-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `11-hierarchical-forecasting.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -52,14 +52,14 @@ MinT; test set long enough for the decision horizon.
 
 ## R functions and Python equivalents
 
-| R (fable) | Python [unverified] |
+| R (fable) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `aggregate_key(state / region, y = sum(y))` | `hierarchicalforecast.utils.aggregate(df, spec)`; add a constant `total` column, spec lists the levels |
+| `aggregate_key(state / region, y = sum(y))` | `hierarchicalforecast.utils.aggregate(df, spec)`; spec lists the levels as column lists, starting from a constant top column (`["Country"]`) |
 | `aggregate_key((state * purpose), ...)` grouped | the same `aggregate` with a spec that lists each crossing as its own level |
-| `reconcile(fit, bu = bottom_up(base), td = top_down(base), mint = min_trace(base, method="mint_shrink"))` | `HierarchicalReconciliation(reconcilers=[BottomUp(), TopDown(method=), MiddleOut(), MinTrace(method="mint_shrink")])` |
+| `reconcile(fit, bu = bottom_up(base), td = top_down(base), mint = min_trace(base, method="mint_shrink"))` | `hierarchicalforecast.core.HierarchicalReconciliation(reconcilers=[BottomUp(), TopDown(method=), MiddleOut(middle_level=, top_down_method=), MinTrace(method="mint_shrink")])`, classes from `hierarchicalforecast.methods` |
 | `min_trace(method="ols"/"wls_struct"/"wls_var"/"mint_cov"/"mint_shrink")` | `MinTrace(method="ols"/"wls_struct"/"wls_var"/"mint_cov"/"mint_shrink")` |
 | `forecast()` on a reconciled mable | `hrec.reconcile(Y_hat_df=, Y_df=fitted_values, S_df=, tags=, level=, intervals_method="normality"/"bootstrap")` |
-| `accuracy()` grouped by level | `utilsforecast.evaluation.evaluate` grouped by `tags` |
+| `accuracy()` grouped by level | `hierarchicalforecast.evaluation.evaluate(df, tags=, train_df=, metrics=)`; also: `utilsforecast.evaluation.evaluate` grouped by `tags` |
 
 ## Common mistakes the book warns about
 

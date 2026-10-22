@@ -98,4 +98,4 @@ approaches, 11.3 forecast reconciliation, 11.4 tourism example, 11.5 grouped
 example, 11.6 reconciled distributional forecasts. R:
 `https://otexts.com/fpp3/hierarchical.html`, `hts.html`, `single-level.html`,
 `reconciliation.html`, `tourism.html`, `rec-prob.html`. Python edition:
-`https://otexts.com/fpppy/` chapter 11. URLs unverified (see `NOTES.md`).
+`https://otexts.com/fpppy/` chapter 11. URLs checked 2026-10-22.

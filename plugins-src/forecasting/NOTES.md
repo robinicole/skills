@@ -105,6 +105,8 @@ goes in `NOTICE`.
 
 ## Phase 1 status
 
+Resolved 2026-10-22; see "Book check". Original note follows.
+
 **Blocked: the books could not be read.** The environment's network policy denies
 `otexts.com` (proxy answers 403 to CONNECT; logged 2026-10-21). The Internet
 Archive and the authors' sites are also denied. The book's source repository is
@@ -148,13 +150,21 @@ Known gaps between the Python templates and the book's R code:
 
 | Item | Book (R) | Python here | Effect |
 |---|---|---|---|
-| NNAR | `NNETAR()` averages 20 networks with its own defaults and simulates intervals | MLPRegressor via mlforecast, 20 seeds, no intervals | Point forecasts differ; no interval |
+| NNAR | `NNETAR()` averages several networks (Python edition: neuralforecast `MLP`, chapter 14) with its own defaults and simulates intervals | MLPRegressor via mlforecast, 20 seeds, no intervals | Point forecasts differ; no interval |
 | Bootstrap intervals | `forecast(bootstrap = TRUE)` | conformal intervals, or statsmodels `simulate` | Different interval method |
 | Sample paths | `generate()` on any model | only statsmodels ETS/SARIMAX `simulate` | Aggregate intervals use statsmodels ETS |
 | CRPS | exact from the forecast distribution | approximated from interval quantiles (`fc_checks.crps_from_intervals`) | Approximation; more levels = closer |
 | STL defaults | feasts window defaults | statsmodels defaults (seasonal 7 unless set) | Components differ unless windows are set |
 | Damped ETS | phi search range per fable | statsforecast bounds phi to [0.8, 0.98] | phi hits 0.8 more often |
-| Deterministic trend example | book restricts the ARIMA error order | AutoARIMA chose ARIMA(2,0,1) errors on aus_airpassengers to 2016 | Different error model; the lesson (narrower intervals) holds |
+| Forecast combination (`practical.py`) | Python edition back-transforms each model, then averages | averages on the log scale, back-transforms once | Not equal; the template gives a geometric-type mean |
+| Missing values (`practical.py`) | Python edition: `Series.interpolate()` | SARIMAX Kalman smoother | Different filled values |
+| MSTL trend (`advanced.py`) | MSTL default trend forecaster | `trend_forecaster=AutoARIMA()` | Different trend forecasts |
+| Bagged ETS (`advanced.py`) | bootstrap the remainder of `MSTL(season_length=4)`, block 8, 100 series, no Box-Cox | Guerrero Box-Cox + robust statsmodels STL | Different bagged series |
+| VAR lag (`advanced.py`) | `VAR.fit(ic=...)` | `select_order(maxlags=8)` | Chosen order can differ |
+| Dynamic harmonic regression (`advanced.py`) | `AutoARIMA(d=0, seasonal=False)` | `AutoARIMA(season_length=1)`, d free | Error model can differ |
+| Regression intervals (`regression.py`) | MLForecast conformal intervals | OLS normal-theory intervals | Same point forecasts, different intervals |
+| Strength features (`explore.py`) | `tsfeatures` `stl_features` | robust statsmodels STL | Slightly different strengths |
+| Fourier K search (`dynamic_regression.py`) | AutoARIMA picks d for each K | d fixed across K | Matters only if d changes with K |
 
 ## Validation results (2026-10-21)
 
@@ -176,7 +186,7 @@ folder. Results vary between runs: explore explicit 1 passed in a targeted rerun
 and failed in the full run. Pushing the descriptions harder risks triggering on
 unrelated prompts; left as is.
 
-## Self-audit (Phase 4 step 6)
+## Self-audit (Phase 4 check 4)
 
 Headless runs with `claude -p --plugin-dir`, outputs in `evals/self-audit/`:
 
@@ -211,23 +221,30 @@ in my own words from the notes; no single-line quotation over 15 words exists in
 skills, references, notes or README. Open: compare against the pages once they
 are reachable.
 
-## Unverified
+## Book check (2026-10-22)
 
-- Every section URL of both editions (slugs in `notes/` are from memory).
-- Which Python libraries the Python edition uses, and per chapter. Expected
-  statsforecast, mlforecast, hierarchicalforecast, utilsforecast, maybe
-  neuralforecast. Not confirmed.
-- Where the Python edition loads its datasets from.
-- Every decision rule and threshold in `notes/` as attributed to the book, in
-  particular: seasonal-strength threshold 0.64 for seasonal differencing; damping
-  range 0.8 to 0.98; NNAR default k = (p + P + 1) / 2; Fourier K values for weekly
-  data; Guerrero as the book's lambda method; BIC preference for VAR lag order.
-- Whether chapter 13 of the online edition has a nowcasting section.
-- The URL of the prison population CSV used in chapter 11.
-- Every R and Python edition page slug used in the skills (aligned with `notes/`, not checked).
-- That the Python edition uses the same section numbering as the R edition.
-- The T/5 cap on the Ljung-Box lag as a book rule.
-- Whether the book uses dof > 0 for ETS residual tests (the templates use 0).
-- Holt-Winters as its own page (`holt-winters.html`) in chapter 8.
-- The "training and test sets" section (13.8) and its page name.
-- Values remembered from the book's examples listed under Parity.
+`otexts.com` was reachable on 2026-10-22. Both editions were downloaded and every
+item that used to be listed here was checked.
+
+| Item | Result |
+|---|---|
+| Section URLs, R edition | Both editions now have one page per chapter. 105 of the 119 old section slugs cited redirect to the right anchor. 14 returned 404 and were replaced with `chapter.html#anchor` or removed (chapters 6 and 13 have no exercises section) |
+| Section URLs, Python edition | `https://otexts.com/fpppy/NN-<chapter>.html`, same anchors as the R edition |
+| Section numbering, Python edition | Same as R except chapter 12 (no NNAR section, so 12.4 is bagging), chapter 13 (no aggregate-interval or training/test sections) and two extra chapters: 14 neural networks, 15 foundation models. Each chapter ends with "Used modules and classes" |
+| Python libraries | statsforecast, utilsforecast, hierarchicalforecast, statsmodels, coreforecast, mlforecast, neuralforecast, tsfeatures, prophet (adapter), scikit-learn. Pinned in `fpppy/data/requirements.txt` |
+| Python data | CSV files in `fpppy/data/fpppy_data.zip`, read from a local `data/` folder. The templates read the R packages' `.rda` files instead; same data |
+| Seasonal strength 0.64 for seasonal differencing | Confirmed, 9.1 (both editions) |
+| Damping range 0.8 to 0.98 | Confirmed, 8.2 |
+| NNAR default k = (p + P + 1)/2 | Confirmed, 12.4 (R). Rounded to nearest; p chosen by AIC (notes said AICc; fixed) |
+| Fourier K for weekly data | Chosen by AICc; K = 6 for us_gasoline (13.1, both editions) |
+| Guerrero for lambda | Confirmed, 3.1; lambda 0.11 for gas. Python edition uses `coreforecast` `boxcox_lambda(method="guerrero")` |
+| BIC for VAR lag order | Confirmed, 12.3: AICc tends to choose too many lags |
+| Nowcasting section in chapter 13 | None. Nowcasting is mentioned only in chapter 6 |
+| Prison population CSV | `https://OTexts.com/fpp3/extrafiles/prison_population.csv` |
+| Ljung-Box lag T/5 cap | Confirmed, 5.4: lag 10 non-seasonal, 2m seasonal, at most T/5 |
+| dof for ETS residual tests | Chapter 8 runs no Ljung-Box test. Chapter 5 adjusts dof for ARIMA only, so dof = 0 for ETS stands |
+| Holt-Winters page | Section 8.3 "Methods with seasonality" (`#sec-holt-winters`); old `holt-winters.html` redirects |
+| Training and test sets section | 13.8 in the R edition (`#sec-training-test`); absent from the Python edition |
+| Values listed under Parity | All eight confirmed in both editions. The deterministic-trend example fits ARIMA(1,0,0) errors; the Python edition caps `max_p=1`. `dynamic_regression.py` now does the same and reproduces it (trend 1.43 against the book's 1.415) |
+
+Still open: the copyright pass against the pages (PLAN open work item 3).

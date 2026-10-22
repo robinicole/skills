@@ -34,7 +34,7 @@ Name the problem from the table, then copy `../../templates/practical.py` with
 | Very long series | Train on the recent part, or a model whose parameters evolve |
 | Missing values | Ask why first; dummies if informative, state-space interpolation if random |
 | Outliers | Robust STL remainder beyond 3 IQR; keep with a dummy unless an error |
-| Weekly data | Fourier terms with period 365.25/7: `forecast-dynamic-regression` |
+| Weekly data | Fourier terms with period 365.25/7: `forecast-regression` |
 
 ## Stage 2: Diagnostics
 
@@ -88,6 +88,6 @@ counts, 13.3 ensuring forecasts stay within limits, 13.4 forecast combinations,
 13.5 prediction intervals for aggregates, 13.6 backcasting, 13.7 very long and very
 short series, 13.8 forecasting on training and test sets, 13.9 missing values and
 outliers. R: `https://otexts.com/fpp3/practical.html`, `weekly.html`, `counts.html`,
-`limited.html`, `combinations.html`, `aggregates.html`, `backcasting.html`,
+`practical.html#sec-limits`, `combinations.html`, `aggregates.html`, `backcasting.html`,
 `long-short-ts.html`, `training-test.html`, `missing-outliers.html`. Python
-edition: `https://otexts.com/fpppy/` chapter 13. URLs unverified (see `NOTES.md`).
+edition: `https://otexts.com/fpppy/` chapter 13, which has no sections on aggregate intervals or training and test sets. URLs checked 2026-10-22.

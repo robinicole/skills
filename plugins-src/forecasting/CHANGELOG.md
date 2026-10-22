@@ -2,6 +2,17 @@
 
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: semantic.
 
+## [0.4.0] - 2026-10-22
+
+### Changed
+
+- Merged `forecast-dynamic-regression` into `forecast-regression`, which now covers
+  linear regression, regression with ARIMA errors and weekly data. Thirteen skills.
+- Book claims, thresholds and section links checked against both editions of the
+  book; broken section links replaced.
+- `dynamic_regression.py`: deterministic-trend example caps the AR order as the
+  Python edition does, and now matches the book.
+
 ## [0.3.0] - 2026-10-21
 
 ### Changed

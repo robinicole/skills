@@ -2,17 +2,17 @@
 
 ## Section URLs
 
-R edition [unverified]: `graphics.html`, `tsibbles.html`, `time-plots.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `graphics.html`, `tsibbles.html`, `time-plots.html`,
 `tspatterns.html`, `seasonal-plots.html`, `subseries.html`, `scatterplots.html`,
 `lag-plots.html`, `acf.html`, `wn.html`, `graphics-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `02-graphics.html`, same section anchors.
 
 ## Key concepts and decision rules
 
 - Data structure: one row per time point per series. In R a `tsibble` has an
   index (time) and keys (series identifiers). In Python the Nixtla long format is
-  `unique_id, ds, y` [unverified that the Python edition uses exactly these names;
-  it is the Nixtla convention].
+  `unique_id, ds, y`; the Python edition uses these names (checked 2026-10-22), and
+  `plot_series` takes `id_col`, `time_col`, `target_col` for other names.
 - Patterns to name on every series: trend (long-run rise or fall, not necessarily
   linear), seasonality (fixed and known period, calendar driven), cycle (rises and
   falls with no fixed period, usually longer than two years, economic). Cycles and
@@ -48,14 +48,14 @@ None in this chapter.
 
 ## R functions and Python equivalents
 
-| R (tsibble, feasts, ggplot2) | Python [unverified] |
+| R (tsibble, feasts, ggplot2) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
 | `as_tsibble(index=, key=)` | pandas long frame with `unique_id, ds, y` |
-| `autoplot()` time plot | `StatsForecast.plot()` or `utilsforecast.plotting.plot_series` |
-| `gg_season()` | manual pandas pivot + matplotlib (no direct equivalent) |
-| `gg_subseries()` | manual (no direct equivalent) |
-| `gg_lag()` | `pandas.plotting.lag_plot` for one lag |
-| `ACF()` + `autoplot()` | `statsmodels.tsa.stattools.acf`, `statsmodels.graphics.tsaplots.plot_acf` |
+| `autoplot()` time plot | `utilsforecast.plotting.plot_series` (the book calls it through `fpppy.utils.plot_series`); also: `StatsForecast.plot()` |
+| `gg_season()` | `seaborn.lineplot(x=month, y=, hue=year)` on pandas date parts (no direct equivalent) |
+| `gg_subseries()` | matplotlib `subplots(1, m)`, one panel per season with an `axhline` at its mean (no direct equivalent) |
+| `gg_lag()` | `Series.shift(k)` + `seaborn.scatterplot` in a grid of lags; also: `pandas.plotting.lag_plot` for one lag |
+| `ACF()` + `autoplot()` | `statsmodels.api.tsa.acf`, `statsmodels.graphics.tsaplots.plot_acf` |
 
 ## Common mistakes the book warns about
 

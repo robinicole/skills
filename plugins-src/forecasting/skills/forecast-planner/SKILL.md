@@ -134,7 +134,7 @@ FPP3 (R edition): 1.1 what can be forecast, 1.2 forecasting, goals and planning,
 1.4 forecasting data and methods, 1.6 basic steps, 5.1 the workflow, 13 practical
 issues. `https://otexts.com/fpp3/intro.html`, `what-can-be-forecast.html`,
 `planning.html`, `basic-steps.html`, `practical.html`. Python edition:
-`https://otexts.com/fpppy/` chapters 1, 5 and 13. All URLs unverified (see `NOTES.md`).
+`https://otexts.com/fpppy/` chapters 1, 5 and 13. URLs checked 2026-10-22.
 
 ## Self-correction
 

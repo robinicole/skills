@@ -1,7 +1,7 @@
 # Decision tree: from the problem and the data to a method
 
 `forecast-planner` walks this tree. Method skills use it to suggest a fallback.
-Book URLs in this file are unverified (see `NOTES.md`).
+Book URLs checked 2026-10-22.
 
 ## Q1. Is the target forecastable?
 
@@ -33,14 +33,15 @@ Q4 for the base model.
 | Fewer observations than parameters of any seasonal model | Non-seasonal ETS or a benchmark; `forecast-practical` (very short series) |
 | Mostly zeros, small counts | `forecast-practical` (Croston family) |
 | Must stay positive or inside [a, b] | Transform first; `forecast-practical` (bounded forecasts) |
-| Weekly, daily or sub-daily; period long or not an integer | `forecast-dynamic-regression` (Fourier terms) or `forecast-advanced` (multiple seasonal periods) |
+| Weekly, daily or sub-daily; period long or not an integer | `forecast-regression` (Fourier terms) or `forecast-advanced` (multiple seasonal periods) |
 | Monthly, quarterly or yearly, one seasonal period | Q5 |
 
 ## Q5. Are there known drivers?
 
 - Drivers whose future values are known or can be forecast better than the target
-  (calendar, price plans, temperature forecasts): `forecast-dynamic-regression`.
-  Use `forecast-regression` only when the residuals are not autocorrelated.
+  (calendar, price plans, temperature forecasts): `forecast-regression`. It starts
+  with a linear regression and moves to ARIMA errors when the residuals are
+  autocorrelated.
 - Several series that drive each other: `forecast-advanced` (VAR).
 - No drivers: Q6.
 
@@ -66,9 +67,8 @@ best benchmark and say so.
 |---|---|---|
 | Any series, first step | `forecast-baselines` | `baselines.py` |
 | Trend and season, no drivers | `forecast-ets`, `forecast-arima` | `ets.py`, `arima.py` |
-| Drivers, autocorrelated errors | `forecast-dynamic-regression` | `dynamic_regression.py` |
-| Drivers, white noise residuals | `forecast-regression` | `regression.py` |
+| Drivers | `forecast-regression` | `regression.py`, then `dynamic_regression.py` if residuals are autocorrelated |
 | Hierarchy or groups | `forecast-hierarchical` | `hierarchical.py` |
 | Several seasonal periods, nonlinear, VAR | `forecast-advanced` | `advanced.py` |
-| Intermittent, bounded, weekly, gaps, outliers | `forecast-practical` | `practical.py` |
+| Intermittent, bounded, gaps, outliers | `forecast-practical` | `practical.py` |
 | No usable data | `forecast-judgmental` | `adjustment-log.md` |

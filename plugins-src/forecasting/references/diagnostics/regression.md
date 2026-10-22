@@ -1,7 +1,7 @@
 # Diagnostics: linear regression
 
 Checks for `forecast-regression`. Severity as in `baselines.md`.
-Book: FPP3 7.3 to 7.9 [unverified sections].
+Book: FPP3 7.3 to 7.9 (sections checked 2026-10-22).
 
 ## Residuals uncorrelated
 
@@ -16,7 +16,7 @@ bg_p = acorr_breusch_godfrey(fit, nlags=2 * m)[1]
 ```
 
 **Failure**: Ljung-Box or Breusch-Godfrey p below 0.05. **Severity**: serious.
-**Fix**: move to regression with ARIMA errors (`forecast-dynamic-regression`).
+**Fix**: move to regression with ARIMA errors (`forecast-regression`).
 
 ## Spurious regression
 

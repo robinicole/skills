@@ -2,10 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `features.html`, `some-simple-statistics.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `features.html`, `some-simple-statistics.html`,
 `acf-features.html`, `stlfeatures.html`, `other-features.html`,
-`exploring-australian-tourism-data.html`, `features-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+`exploring-australian-tourism-data.html`, `features.html#sec-feast-exercises`.
+Python edition (checked 2026-10-22): one page per chapter, `04-features.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -41,13 +41,13 @@ None in this chapter.
 
 ## R functions and Python equivalents
 
-| R (feasts) | Python [unverified] |
+| R (feasts) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `features(y, feat_stl)` | `statsmodels STL` then compute strengths by hand; the `tsfeatures` package computes the same set at scale |
-| `features(y, feat_acf)` | `statsmodels.tsa.stattools.acf` |
-| `features(y, unitroot_kpss)` | `statsmodels.tsa.stattools.kpss` |
-| `features(y, unitroot_ndiffs/nsdiffs)` | `statsforecast.arima.ndiffs`, `nsdiffs` |
-| `features(y, feature_set(pkgs="feasts"))` | `tsfeatures.tsfeatures` |
+| `features(y, feat_stl)` | `tsfeatures.tsfeatures(df, freq=m, features=[stl_features])`; also: `statsmodels STL` then strengths by hand |
+| `features(y, feat_acf)` | `tsfeatures.tsfeatures(df, freq=m, features=[acf_features])`; also: `statsmodels.tsa.stattools.acf` |
+| `features(y, unitroot_kpss)` | `tsfeatures.unitroot_kpss` in the feature list; also: `statsmodels.tsa.stattools.kpss` |
+| `features(y, unitroot_ndiffs/nsdiffs)` | `statsforecast.arima.ndiffs`, `nsdiffs` (not in the Python edition chapter 4; chapter 9 uses them) |
+| `features(y, feature_set(pkgs="feasts"))` | `tsfeatures.tsfeatures(df, freq=m, features=[...])` with a list of 16 feature functions |
 
 ## Common mistakes the book warns about
 

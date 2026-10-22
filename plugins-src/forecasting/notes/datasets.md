@@ -36,4 +36,6 @@ check and avoids redistributing GPL data files in this repo.
 | aus_airpassengers | fpp3 | Year | none | yearly | short series, drift |
 
 Not in either package: the prison population data used in the hierarchical chapter
-is read from a CSV URL on the book site [unverified URL].
+is read from `https://OTexts.com/fpp3/extrafiles/prison_population.csv` (checked
+2026-10-22). The Python edition ships every dataset as CSV in
+`https://otexts.com/fpppy/data/fpppy_data.zip`.
