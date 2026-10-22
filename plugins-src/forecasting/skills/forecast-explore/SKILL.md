@@ -93,4 +93,4 @@ FPP3 chapter 2 (time plots, seasonal and subseries plots, lag plots,
 autocorrelation, white noise), chapter 3 (transformations, components, moving
 averages, classical decomposition, STL), chapter 4 (features). R:
 `https://otexts.com/fpp3/graphics.html`, `decomposition.html`, `features.html`.
-Python edition: `https://otexts.com/fpppy/` chapters 2 to 4. URLs unverified (see `NOTES.md`).
+Python edition: `https://otexts.com/fpppy/` chapters 2 to 4. URLs checked 2026-10-22.

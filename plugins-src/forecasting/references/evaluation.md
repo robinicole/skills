@@ -1,7 +1,7 @@
 # Evaluation
 
 How to score forecasts. `forecast-baselines` owns this file; every other skill
-points here. Book: FPP3 5.8 to 5.10 [unverified sections].
+points here. Book: FPP3 5.8 to 5.10 (sections checked 2026-10-22).
 
 ## Rules
 

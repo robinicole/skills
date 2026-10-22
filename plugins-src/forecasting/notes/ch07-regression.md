@@ -2,12 +2,12 @@
 
 ## Section URLs
 
-R edition [unverified]: `regression.html`, `regression-intro.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `regression.html`, `regression-intro.html`,
 `least-squares.html`, `useful-predictors.html`, `selecting-predictors.html`,
 `forecasting-regression.html`, `nonlinear-regression.html`,
-`correlation-causation.html`, `regression-matrices.html`,
+`regression.html#sec-causality`, `regression-matrices.html`,
 `regression-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `07-regression.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -66,14 +66,14 @@ accuracy reported separately.
 
 ## R functions and Python equivalents
 
-| R (fable) | Python [unverified] |
+| R (fable) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `TSLM(y ~ trend() + season())` | `statsmodels.formula.api.ols` with `DeterministicProcess(constant, order, seasonal)` or `Fourier` terms |
-| `fourier(K=)` | `statsmodels.tsa.deterministic.Fourier(period, order)` |
-| `glance()` (AICc, CV) | `results.aic`, `results.bic`; AICc and LOOCV computed by hand |
-| `forecast(new_data=scenarios())` | `results.get_prediction(exog=future_X)` |
-| `gg_tsresiduals()`, `ljung_box` | `plot_acf`, `acorr_ljungbox(model_df=)` |
-| `TSLM(y ~ trend(knots=))` | piecewise terms built by hand |
+| `TSLM(y ~ trend() + season())` | `mlforecast.MLForecast(models=fpppy.models.LinearRegression())` with `utilsforecast.feature_engineering.trend` and `pandas.get_dummies(..., drop_first=True)`; also: `statsmodels.formula.api.ols` with `DeterministicProcess` |
+| `fourier(K=)` | `utilsforecast.feature_engineering.fourier(df, freq=, season_length=, k=)`; also: `statsmodels.tsa.deterministic.Fourier(period, order)` |
+| `glance()` (AICc, CV) | AIC, AICc, BIC and leave-one-out CV (hat-matrix shortcut) written as helper functions in the chapter; also: statsmodels `results.aic`, `results.bic` |
+| `forecast(new_data=scenarios())` | `MLForecast.predict(h=, X_df=scenario_df)`, one call per scenario; intervals from `PredictionIntervals(n_windows=, h=)` at fit (conformal); also: statsmodels `results.get_prediction(exog=future_X)` |
+| `gg_tsresiduals()`, `ljung_box` | `plot_diagnostics()` helper (time plot, `plot_acf`, histogram), `acorr_ljungbox(resid, lags=[10])` |
+| `TSLM(y ~ trend(knots=))` | piecewise terms built by hand: `(trend - tau).clip(lower=0)` per knot |
 
 ## Common mistakes the book warns about
 

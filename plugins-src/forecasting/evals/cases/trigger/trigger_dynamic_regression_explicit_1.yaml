@@ -1,6 +1,6 @@
 name: trigger_dynamic_regression_explicit_1
-description: forecast-dynamic-regression should trigger on a explicit prompt
-skill: forecast-dynamic-regression
+description: forecast-regression should trigger on a explicit prompt
+skill: forecast-regression
 kind: explicit
 user_message: Fit a regression with ARIMA errors for daily electricity demand using temperature as an exogenous variable.
 expected:

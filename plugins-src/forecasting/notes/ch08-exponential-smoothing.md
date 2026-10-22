@@ -2,10 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `expsmooth.html`, `ses.html`, `holt.html`, `holt-winters.html`, `taxonomy.html`,
-`ets.html`, `estimation-and-model-selection.html`, `ets-forecasting.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `expsmooth.html`, `ses.html`, `holt.html`, `holt-winters.html`, `taxonomy.html`,
+`ets.html`, `exponential-smoothing.html#sec-ets-estimation`, `ets-forecasting.html`,
 `expsmooth-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `08-exponential-smoothing.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -48,14 +48,14 @@ benchmarks and against other families.
 
 ## R functions and Python equivalents
 
-| R (fable) | Python [unverified] |
+| R (fable) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
 | `ETS(y)` (automatic) | `statsforecast.models.AutoETS(season_length=)` |
-| `ETS(y ~ error("A") + trend("Ad") + season("M"))` | `AutoETS(season_length=, model="MAM", damped=True)` or `ETS(model=...)` [check exact class] |
-| `report()`, `tidy()`, `components()` | `sf.fitted_[i, j].model_` dict holding parameters and states [check] |
+| `ETS(y ~ error("A") + trend("Ad") + season("M"))` | `statsforecast.models.AutoETS(season_length=, model="AAM", damped=True)`; a full model string fixes the form, `phi=` fixes the damping |
+| `report()`, `tidy()`, `components()` | `sf.fitted_[i, j].model_` dict: `"method"`, `"fit"].x` (parameters), `"par"`, `"components"`, `"states"`, `"residuals"`, `"actual_residuals"` |
 | `forecast(h=)` | `sf.forecast(h=, level=)` |
-| `glance()` AICc | `model_["aicc"]` [check] |
-| `statsmodels.tsa.holtwinters.ExponentialSmoothing` / `ETSModel` | alternative with full state space output |
+| `glance()` AICc | `model_["aicc"]` [check] (not in the Python edition) |
+| `statsmodels.tsa.holtwinters.ExponentialSmoothing` / `ETSModel` | alternative with full state space output (not in the Python edition) |
 
 ## Common mistakes the book warns about
 

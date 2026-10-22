@@ -1,7 +1,7 @@
 # Diagnostics: hierarchical and grouped forecasts
 
 Checks for `forecast-hierarchical`. Severity as in `baselines.md`.
-Book: FPP3 11.1 to 11.6 [unverified sections].
+Book: FPP3 11.1 to 11.6 (sections checked 2026-10-22).
 
 ## Structure is right
 

@@ -1,7 +1,7 @@
 # Diagnostics: exponential smoothing (ETS)
 
 Checks for `forecast-ets`. Severity as in `baselines.md`.
-Book: FPP3 8.4 to 8.7 [unverified sections].
+Book: FPP3 8.4 to 8.7 (sections checked 2026-10-22).
 
 ## Innovation residuals are white noise
 

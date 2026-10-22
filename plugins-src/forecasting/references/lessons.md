@@ -19,13 +19,13 @@ Format:
 **Trigger**: Comparing ETS with ARIMA, or ARIMA models with different d or D.
 **Mistake**: Picking the lowest AICc across them.
 **Rule**: AICc compares models only inside one family, fitted to the same data with the same transformation and differencing. Across those, use time series cross-validation.
-**Source**: Book chapters 8 and 9 [unverified section]; arima.py run, 2026-10-21.
+**Source**: Book sections 9.6, 9.9 and 9.10; arima.py run, 2026-10-21.
 
 ### All: Accuracy on the training set
 **Trigger**: Reporting residual RMSE or R squared as forecast accuracy.
 **Mistake**: Fitted values are one-step predictions from a model that saw the data.
 **Rule**: Report accuracy on a test set or from time series cross-validation, per forecast horizon.
-**Source**: Book chapter 5 [unverified section].
+**Source**: Book section 5.8.
 
 ### All: Forecast horizon in cross-validation
 **Trigger**: Cross-validation with h shorter than the decision needs.

@@ -111,5 +111,4 @@ audit again.
 FPP3 chapter 5 (5.3 fitted values and residuals, 5.4 residual diagnostics, 5.8 to
 5.10 evaluation) and chapter 13 (13.8 training and test sets, 13.9 missing values
 and outliers). R: `https://otexts.com/fpp3/toolbox.html`, `practical.html`.
-Python edition: `https://otexts.com/fpppy/` chapters 5 and 13. URLs unverified
-(see `NOTES.md`).
+Python edition: `https://otexts.com/fpppy/` chapters 5 and 13. URLs checked 2026-10-22.

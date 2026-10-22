@@ -79,5 +79,4 @@ exercise one step harder. Point to the method skill for the concept.
 ## Book sections
 
 The exercises practise the methods of FPP3 chapters 2 to 13. R:
-`https://otexts.com/fpp3/`. Python edition: `https://otexts.com/fpppy/`. URLs
-unverified (see `NOTES.md`).
+`https://otexts.com/fpp3/`. Python edition: `https://otexts.com/fpppy/`. URLs checked 2026-10-22.

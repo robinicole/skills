@@ -92,4 +92,4 @@ skill that closes them.
 FPP3 1.6 basic steps (the final step: using and evaluating the forecast) and 5.8
 to 5.10 (accuracy reporting). R: `https://otexts.com/fpp3/basic-steps.html`,
 `accuracy.html`. Python edition: `https://otexts.com/fpppy/` chapters 1 and 5.
-URLs unverified (see `NOTES.md`).
+URLs checked 2026-10-22.

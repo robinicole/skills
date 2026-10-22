@@ -2,11 +2,11 @@
 
 ## Section URLs
 
-R edition [unverified]: `toolbox.html`, `workflow.html`, `simple-methods.html`,
-`ftransformations.html`, `residuals.html`, `distributions.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `toolbox.html`, `toolbox.html#a-tidy-forecasting-workflow`, `simple-methods.html`,
+`ftransformations.html`, `residuals.html`, `toolbox.html#sec-prediction-intervals`,
 `prediction-intervals.html`, `forecasting-decomposition.html`, `accuracy.html`,
 `distaccuracy.html`, `tscv.html`, `toolbox-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `05-toolbox.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -76,17 +76,17 @@ for distributions; accuracy per horizon.
 
 ## R functions and Python equivalents
 
-| R (fable, feasts) | Python [unverified] |
+| R (fable, feasts) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
 | `MEAN()`, `NAIVE()`, `SNAIVE()`, `RW(y ~ drift())` | `statsforecast.models.HistoricAverage`, `Naive`, `SeasonalNaive`, `RandomWalkWithDrift` |
 | `augment()` (fitted, residuals) | `StatsForecast.forecast_fitted_values()` after `forecast(fitted=True)` |
-| `gg_tsresiduals()` | manual: matplotlib time plot + `plot_acf` + histogram |
-| `features(.innov, ljung_box, lag=, dof=)` | `statsmodels.stats.diagnostic.acorr_ljungbox(x, lags=, model_df=)` |
-| `forecast(h=, bootstrap=TRUE)` | `ConformalIntervals` via `prediction_intervals=` (conformal, not bootstrap) |
+| `gg_tsresiduals()` | a `plot_diagnostics()` helper written in the chapter: matplotlib time plot + `plot_acf` + histogram |
+| `features(.innov, ljung_box, lag=, dof=)` | `statsmodels.stats.diagnostic.acorr_ljungbox(x, lags=, model_df=)`; `boxpierce=True` adds Box-Pierce |
+| `forecast(h=, bootstrap=TRUE)` | bootstrap by hand: resample residuals from `forecast_fitted_values()` with `numpy.random.choice`, cumulate into paths, take quantiles; also: `ConformalIntervals` via `prediction_intervals=` (conformal, not bootstrap; the book describes conformal intervals in text only) |
 | `hilo()` | `level=[80, 95]` columns in the forecast frame |
-| `accuracy()` | `utilsforecast.evaluation.evaluate` with `utilsforecast.losses` |
-| `stretch_tsibble(.init=, .step=)` | `StatsForecast.cross_validation(h=, step_size=, n_windows=)` |
-| `decomposition_model(STL, ...)` | `statsforecast.models.MSTL(trend_forecaster=)` |
+| `accuracy()` | `utilsforecast.evaluation.evaluate(fc, train_df=, metrics=[rmse, mae, mape, partial(mase, seasonality=m)])`; CRPS as 2 x `mqloss` over many levels |
+| `stretch_tsibble(.init=, .step=)` | `StatsForecast.cross_validation(h=, step_size=, test_size=)` or `n_windows=` |
+| `decomposition_model(STL, ...)` | statsmodels `STL`, then `Naive` on the adjusted series and `SeasonalNaive` on the seasonal part, forecast columns added; also: `statsforecast.models.MSTL(trend_forecaster=)` |
 
 ## Common mistakes the book warns about
 

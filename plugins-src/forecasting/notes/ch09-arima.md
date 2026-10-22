@@ -2,11 +2,11 @@
 
 ## Section URLs
 
-R edition [unverified]: `arima.html`, `stationarity.html`, `backshift.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `arima.html`, `stationarity.html`, `backshift.html`,
 `AR.html`, `MA.html`, `non-seasonal-arima.html`, `arima-estimation.html`,
 `arima-r.html`, `arima-forecasting.html`, `seasonal-arima.html`, `arima-ets.html`,
 `arima-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `09-arima.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -20,7 +20,7 @@ Python edition [unverified]: same topics, slugs not confirmed.
 - Unit root tests to decide d: KPSS (null is stationarity; a small p-value means
   difference), used by the automatic order functions. Seasonal strength from an
   STL decomposition decides D (difference when the seasonal strength exceeds a
-  threshold near 0.64).
+  threshold: one seasonal difference when F_S is 0.64 or more).
 - Stabilise the variance (log or Box-Cox) before differencing.
 - AR(p): the series regressed on its own past values; MA(q): on past errors.
   ARIMA(p,d,q) combines them on the differenced series; the constant decides the
@@ -58,17 +58,17 @@ AICc within one differencing order; cross-validation across families.
 
 ## R functions and Python equivalents
 
-| R (fable, feasts) | Python [unverified] |
+| R (fable, feasts) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `features(y, unitroot_kpss)` | `statsmodels.tsa.stattools.kpss` |
-| `features(y, unitroot_ndiffs/nsdiffs)` | `statsforecast.arima.ndiffs(x, test="kpss")`, `nsdiffs(x, period=)` |
+| `features(y, unitroot_kpss)` | `statsmodels.tsa.stattools.kpss(x, nlags=)` |
+| `features(y, unitroot_ndiffs/nsdiffs)` | `statsforecast.arima.ndiffs(x)`, `nsdiffs(x, period=)` |
 | `difference(y, lag=)` | `pandas.Series.diff(periods=)` |
-| `gg_tsdisplay(plot_type="partial")` | `plot_acf`, `plot_pacf` |
+| `gg_tsdisplay(plot_type="partial")` | `plot_acf`, `plot_pacf` on a matplotlib mosaic |
 | `ARIMA(y)` automatic | `statsforecast.models.AutoARIMA(season_length=)` |
 | `ARIMA(y ~ pdq(0,1,1) + PDQ(0,1,1))` | `statsforecast.models.ARIMA(order=, seasonal_order=, season_length=)` |
 | `ARIMA(y, stepwise=FALSE, approx=FALSE)` | `AutoARIMA(stepwise=False, approximation=False)` |
-| `report()`, `glance()` | `sf.fitted_[i, j].model_` dict (`arma`, `coef`, `aicc`) [check] |
-| `statsmodels.tsa.arima.model.ARIMA` / `SARIMAX` | alternative with full summary |
+| `report()`, `glance()` | `sf.fitted_[i, j].model_` dict (`aic`, `aicc`, `bic`, `sigma2`, `loglik`); `statsforecast.arima.ARIMASummary(model_)` for the orders |
+| `statsmodels.tsa.arima.model.ARIMA` / `SARIMAX` | alternative with full summary (not in the Python edition) |
 
 ## Common mistakes the book warns about
 

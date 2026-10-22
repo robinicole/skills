@@ -2,7 +2,7 @@
 
 Checks for `forecast-baselines`. Severity: **fatal** = do not use the forecast;
 **serious** = use only with the caveat stated; **minor** = note it.
-Book: FPP3 5.4, 5.5, 5.8 to 5.10 [unverified sections].
+Book: FPP3 5.4, 5.5, 5.8 to 5.10 (sections checked 2026-10-22).
 
 ## Residuals uncorrelated
 

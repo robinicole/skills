@@ -2,8 +2,8 @@
 
 One entry per method: when to use it, the Python function, the book's R function,
 and the book sections. Book URLs follow the pattern `https://otexts.com/fpp3/<page>.html`
-(R edition) and `https://otexts.com/fpppy/` (Python edition). **All page names
-below are unverified** (see `NOTES.md`).
+(R edition) and `https://otexts.com/fpppy/` (Python edition). Page names checked
+2026-10-22; old section pages redirect to anchors on the chapter page.
 
 ## Benchmarks (mean, naive, seasonal naive, drift)
 
@@ -51,7 +51,7 @@ below are unverified** (see `NOTES.md`).
 - **Python**: `AutoARIMA` / `ARIMA` with predictors in `X` (model API) or extra columns plus `X_df` (`StatsForecast` API).
 - **R (book)**: `ARIMA(y ~ x + fourier(K = k) + PDQ(0, 0, 0))`.
 - **Book**: FPP3 chapter 10.
-- **Skill**: `forecast-dynamic-regression`. Diagnostics: `diagnostics/dynamic-regression.md`.
+- **Skill**: `forecast-regression`. Diagnostics: `diagnostics/dynamic-regression.md`.
 
 ## Hierarchical and grouped reconciliation
 
@@ -71,7 +71,7 @@ below are unverified** (see `NOTES.md`).
 
 ## Practical cases
 
-- **Use**: weekly and finer data, counts and intermittent demand, bounded values, combinations, aggregates, backcasting, short and long series, missing values, outliers.
+- **Use**: counts and intermittent demand, bounded values, combinations, aggregates, backcasting, short and long series, missing values, outliers.
 - **Python**: `CrostonClassic`, `CrostonSBA`, `TSB`; scaled logit by hand; `statsmodels` `ETSModel.simulate` for sample paths; `SARIMAX` for gaps; robust `STL` for outliers.
 - **R (book)**: `CROSTON()`, `new_transformation()`, `generate()`, `interpolate()`.
 - **Book**: FPP3 chapter 13.

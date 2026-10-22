@@ -2,11 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `judgmental.html`, `judgmental-beware.html`,
-`key-principles.html`, `delphimethod.html`, `analogies.html`, `scenarios.html`,
-`new-product-forecasting.html`, `judgmental-adjustments.html`,
-`judgmental-exercises.html`.
-Python edition [unverified]: same chapter, possibly shortened.
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `judgmental.html`, `judgmental.html#sec-judgmental-limitations`,
+`judgmental.html#sec-judgmental-principles`, `delphimethod.html`, `analogies.html`, `scenarios.html`,
+`judgmental.html#sec-new-products`, `judgmental-adjustments.html`.
+Python edition (checked 2026-10-22): one page per chapter, `06-judgmental.html`, same section anchors.
 
 ## Key concepts and decision rules
 

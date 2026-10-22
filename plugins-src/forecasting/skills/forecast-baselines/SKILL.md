@@ -97,4 +97,4 @@ evaluating point accuracy, 5.9 distributional accuracy, 5.10 time series
 cross-validation. R: `https://otexts.com/fpp3/toolbox.html`, `simple-methods.html`,
 `residuals.html`, `prediction-intervals.html`, `ftransformations.html`,
 `accuracy.html`, `distaccuracy.html`, `tscv.html`. Python edition:
-`https://otexts.com/fpppy/` chapter 5. URLs unverified (see `NOTES.md`).
+`https://otexts.com/fpppy/` chapter 5. URLs checked 2026-10-22.

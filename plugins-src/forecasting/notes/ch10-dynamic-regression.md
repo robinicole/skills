@@ -2,10 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `dynamic.html`, `estimation.html`, `regarima.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `dynamic.html`, `estimation.html`, `regarima.html`,
 `forecasting.html`, `stochastic-and-deterministic-trends.html`, `dhr.html`,
 `lagged-predictors.html`, `dynamic-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `10-dynamic-regression.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -51,13 +51,13 @@ selection; ex-ante accuracy with forecast predictors as the honest number.
 
 ## R functions and Python equivalents
 
-| R (fable) | Python [unverified] |
+| R (fable) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `ARIMA(y ~ x1 + x2)` | `statsforecast.models.AutoARIMA` with exogenous columns in the training frame and `X_df=` in `forecast()` |
-| `ARIMA(y ~ fourier(K=) + PDQ(0,0,0))` | `Fourier` terms from statsmodels as exogenous columns; `AutoARIMA(season_length=1)` |
-| `ARIMA(y ~ x + lag(x, 1) + lag(x, 2))` | shifted columns built with `pandas.shift` |
-| `forecast(new_data=)`, `scenarios()` | `forecast(h=, X_df=future_exog)` |
-| `statsmodels SARIMAX(exog=)` | alternative with full summary |
+| `ARIMA(y ~ x1 + x2)` | `statsforecast.models.AutoARIMA` with exogenous columns in the training frame and `X_df=` in `forecast()`/`predict()`; future frame from `utilsforecast.processing.make_future_dataframe` |
+| `ARIMA(y ~ fourier(K=) + PDQ(0,0,0))` | `utilsforecast.feature_engineering.fourier(season_length=m, k=K)` via `pipeline`, then `AutoARIMA(season_length=m, seasonal=False)`; also: statsmodels `Fourier` columns with `AutoARIMA(season_length=1)` |
+| `ARIMA(y ~ x + lag(x, 1) + lag(x, 2))` | shifted columns built with `pandas.shift`; lag count chosen by `model_["aicc"]` |
+| `forecast(new_data=)`, `scenarios()` | `forecast(h=, X_df=future_exog)` or `fit` then `predict(h=, X_df=, level=)` |
+| `statsmodels SARIMAX(exog=)` | alternative with full summary (not in the Python edition) |
 
 ## Common mistakes the book warns about
 

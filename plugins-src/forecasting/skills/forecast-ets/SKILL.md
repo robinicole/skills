@@ -69,7 +69,7 @@ form and its parameters in words, residual check, cross-validated accuracy, the
 forecast with intervals and the plot.
 
 If residuals fail: try ARIMA (`/forecasting:forecast-arima`). If drivers matter:
-`/forecasting:forecast-dynamic-regression`. Then `/forecasting:forecast-auditor`.
+`/forecasting:forecast-regression`. Then `/forecasting:forecast-auditor`.
 
 ## Common mistakes
 
@@ -88,6 +88,6 @@ FPP3 chapter 8: 8.1 simple exponential smoothing, 8.2 methods with trend, 8.3
 methods with seasonality, 8.4 a taxonomy, 8.5 innovations state space models, 8.6
 estimation and model selection, 8.7 forecasting with ETS. R:
 `https://otexts.com/fpp3/expsmooth.html`, `ses.html`, `holt.html`,
-`holt-winters.html`, `taxonomy.html`, `ets.html`, `estimation-and-model-selection.html`,
+`holt-winters.html`, `taxonomy.html`, `ets.html`, `exponential-smoothing.html#sec-ets-estimation`,
 `ets-forecasting.html`. Python edition: `https://otexts.com/fpppy/` chapter 8.
-URLs unverified (see `NOTES.md`).
+URLs checked 2026-10-22.

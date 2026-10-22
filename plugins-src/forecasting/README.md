@@ -6,9 +6,9 @@ Rob J Hyndman and George Athanasopoulos, *Forecasting: Principles and Practice*
 The book text and exercises belong to its authors. The skills paraphrase its
 methods and link to the book sections; read the book for the reasoning.
 
-**Status.** The book sites could not be reached while this version was built, so
-book claims and section links come from notes written from memory. They are
-listed as unverified in `NOTES.md`. The Python templates were run end to end.
+**Status.** Book claims, thresholds and section links were checked against both
+editions on 2026-10-22 (see "Book check" in `NOTES.md`). The Python templates were
+run end to end.
 
 ## Workflow
 
@@ -25,10 +25,9 @@ so each skill reads what the earlier ones found.
 | `/forecasting:forecast-planner` | Frame the decision, the forecast horizon and the data; get a method path and a plan |
 | `/forecasting:forecast-explore` | Plots, ACF, transformations, STL, features for many series |
 | `/forecasting:forecast-baselines` | Benchmarks, residual checks, bias adjustment, cross-validation, accuracy measures |
-| `/forecasting:forecast-regression` | Linear regression with trend, dummies, Fourier terms, predictors |
+| `/forecasting:forecast-regression` | Regression with predictors: trend, dummies, Fourier terms, ARIMA errors, weekly data, lagged predictors, scenarios |
 | `/forecasting:forecast-ets` | Exponential smoothing |
 | `/forecasting:forecast-arima` | ARIMA and seasonal ARIMA |
-| `/forecasting:forecast-dynamic-regression` | Regression with ARIMA errors, Fourier terms, lagged predictors, scenarios |
 | `/forecasting:forecast-hierarchical` | Hierarchical and grouped series, reconciliation |
 | `/forecasting:forecast-advanced` | Multiple seasonality, Prophet, VAR, neural networks, bagging |
 | `/forecasting:forecast-practical` | Intermittent demand, bounds, combinations, totals, gaps, outliers |

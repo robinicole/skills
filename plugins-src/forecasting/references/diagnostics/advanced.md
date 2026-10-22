@@ -1,7 +1,7 @@
 # Diagnostics: advanced methods
 
 Checks for `forecast-advanced`. Severity as in `baselines.md`.
-Book: FPP3 chapter 12 [unverified sections].
+Book: FPP3 chapter 12 (sections checked 2026-10-22).
 
 ## The standard model was tried first
 

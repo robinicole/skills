@@ -1,7 +1,7 @@
 # Diagnostics: dynamic regression
 
-Checks for `forecast-dynamic-regression`. Severity as in `baselines.md`.
-Book: FPP3 10.1 to 10.6 [unverified sections].
+Checks for `forecast-regression`. Severity as in `baselines.md`.
+Book: FPP3 10.1 to 10.6 (sections checked 2026-10-22).
 
 ## Stationary variables
 

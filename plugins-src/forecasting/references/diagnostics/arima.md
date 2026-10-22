@@ -1,7 +1,7 @@
 # Diagnostics: ARIMA
 
 Checks for `forecast-arima`. Severity as in `baselines.md`.
-Book: FPP3 9.1, 9.7 to 9.10 [unverified sections].
+Book: FPP3 9.1, 9.7 to 9.10 (sections checked 2026-10-22).
 
 ## Variance stable before differencing
 

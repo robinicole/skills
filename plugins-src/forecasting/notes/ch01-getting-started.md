@@ -2,10 +2,10 @@
 
 ## Section URLs
 
-R edition [unverified]: `intro.html`, `what-can-be-forecast.html`, `planning.html`,
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `intro.html`, `what-can-be-forecast.html`, `planning.html`,
 `data-methods.html`, `case-studies.html`, `basic-steps.html`, `perspective.html`,
 `intro-exercises.html`.
-Python edition [unverified]: same chapter, slugs not confirmed.
+Python edition (checked 2026-10-22): one page per chapter, `01-intro.html`, same section anchors.
 
 ## Key concepts and decision rules
 
@@ -43,7 +43,9 @@ Introduced in principle: judge a model on forecasts of data it did not see.
 ## R functions and Python equivalents
 
 No code beyond loading `fpp3` in R. The Python edition loads pandas and the Nixtla
-libraries [unverified: exact imports].
+libraries: `pandas`, `numpy`, `statsforecast.StatsForecast`,
+`statsforecast.models.AutoETS`, `utilsforecast.plotting.plot_series` and the book's
+own wrapper `fpppy.utils.plot_series` (checked against the Python edition 2026-10-22).
 
 ## Common mistakes the book warns about
 

@@ -1,7 +1,7 @@
 {
   "name": "forecasting",
   "description": "Plan, build, check and report time series forecasts in Python, following Hyndman and Athanasopoulos, Forecasting: Principles and Practice.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": {
     "name": "Robin Nicole"
   },

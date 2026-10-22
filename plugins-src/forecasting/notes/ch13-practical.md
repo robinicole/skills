@@ -2,18 +2,17 @@
 
 ## Section URLs
 
-R edition [unverified]: `practical.html`, `weekly.html`, `counts.html`,
-`limited.html`, `combinations.html`, `aggregates.html`, `backcasting.html`,
-`long-short-ts.html`, `training-test.html`, `nowcasting.html`? [unverified whether this section exists
-in the online edition], `missing-outliers.html`, `practical-exercises.html`.
-Python edition [unverified]: same topics, slugs not confirmed.
+R edition (checked 2026-10-22; old section slugs redirect to chapter anchors): `practical.html`, `weekly.html`, `counts.html`,
+`practical.html#sec-limits`, `combinations.html`, `aggregates.html`, `backcasting.html`,
+`long-short-ts.html`, `training-test.html`, `missing-outliers.html`.
+Python edition (checked 2026-10-22): one page per chapter, `13-practical.html`, same section anchors. No sections on aggregate intervals or training and test sets, so 13.5 is backcasting and 13.7 outliers and missing values.
 
 ## Key concepts and decision rules
 
 - Weekly data: period about 52.18, not an integer, and long. Use STL on the log or
   Box-Cox scale with a non-seasonal model on the adjusted series, or dynamic
-  harmonic regression with Fourier terms; choose K by AICc (around 5 to 6 pairs in
-  the book's example).
+  harmonic regression with Fourier terms; choose K by AICc (K = 6 for the
+  US gasoline example in both editions).
 - Daily and sub-daily data: several seasonal periods; moving holidays need dummy
   predictors in a dynamic regression; STL with several periods, or Fourier terms
   per period.
@@ -60,15 +59,15 @@ measures; for aggregates, compare simulated intervals with empirical coverage.
 
 ## R functions and Python equivalents
 
-| R (fable) | Python [unverified] |
+| R (fable) | Python (checked against the Python edition 2026-10-22) |
 |---|---|
-| `CROSTON(y)` | `statsforecast.models.CrostonClassic`, `CrostonSBA`, `CrostonOptimized`, `TSB`, `ADIDA`, `IMAPA` |
-| `log(y)` in model formula | log columns by hand and back-transform; `inv_boxcox` |
+| `CROSTON(y)` | `statsforecast.models.CrostonClassic`, `CrostonOptimized`, `CrostonSBA`; also: `TSB`, `ADIDA`, `IMAPA` |
+| `log(y)` in model formula | `np.log` on the frame before `forecast`, `np.exp` on point and interval columns after; also: `inv_boxcox` |
 | scaled logit via `new_transformation()` | functions by hand |
-| `(ets + arima + stl) / 3` combination in a mable | average columns of the forecast frame |
-| `generate(h=, times=)` sample paths | `statsforecast` has no sample-path generator; statsmodels `simulate()` on a fitted model, or bootstrap by hand |
-| `ARIMA(y)` interpolation, `interpolate()` | statsmodels SARIMAX handles NaN; `pandas.interpolate` for simple cases |
-| `STL(... robust=TRUE)` remainder for outliers | `statsmodels STL(robust=True)` |
+| `(ets + arima + stl) / 3` combination in a mable | average columns of the forecast frame after back-transforming each member; intervals from quantiles of validation residuals of the average |
+| `generate(h=, times=)` sample paths | `statsforecast` has no sample-path generator; statsmodels `simulate()` on a fitted model, or bootstrap by hand (not in the Python edition) |
+| `ARIMA(y)` interpolation, `interpolate()` | `pandas.Series.interpolate()` (StatsForecast rejects NaN); also: statsmodels SARIMAX handles NaN |
+| `STL(... robust=TRUE)` remainder for outliers | `statsforecast.models.MSTL(season_length=m, stl_kwargs={"robust": True})`, flag remainders beyond 3 IQR; also: `statsmodels STL(robust=True)` |
 
 ## Common mistakes the book warns about
 
