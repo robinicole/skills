@@ -4,7 +4,7 @@
 
 ### Issue tracker
 
-Issues live as local markdown files under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
+Issues to work on live in Linear, team "Robin Nicole Freelance", project "Skills" (e.g. ROB-5, ROB-6). Use the Linear MCP tools to list, read and update them.
 
 ### Triage labels
 
